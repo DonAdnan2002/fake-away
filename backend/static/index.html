@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>تثبّت | Tathabbat – عين نينوى</title>
+  <style>
+    :root {
+      --navy: #0A0F1E;
+      --navy-card: #131B2E;
+      --gold: #D7AD5A;
+      --cyan: #38BDF8;
+      --real: #00E5A0;
+      --warn: #FFB703;
+      --fake: #FF4D6D;
+      --bg: #F3F5F9;
+      --line: #E2E8F0;
+      --text: #1E293B;
+      --muted: #64748B;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: Tahoma, Arial, sans-serif; }
+    .layout { display: grid; grid-template-columns: 245px 1fr; min-height: 100vh; }
+    .side { background: var(--navy); color: #F1F5F9; padding: 20px; position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 6px; }
+    .logo { font-size: 22px; color: var(--gold); font-weight: bold; margin-bottom: 14px; }
+    .logo small { display: block; font-size: 11px; color: var(--cyan); margin-top: 4px; }
+    .nav-btn { display: block; width: 100%; text-align: start; padding: 11px 13px; border: 0; border-radius: 9px; background: transparent; color: #CBD5E1; cursor: pointer; font-size: 14px; }
+    .nav-btn.active, .nav-btn:hover { background: #1E293B; color: var(--cyan); }
+    .lang-box { margin-top: auto; padding-top: 12px; border-top: 1px solid #273554; }
+    .lang-box label { display: block; font-size: 11px; color: #94A3B8; margin-bottom: 6px; }
+    .lang-row { display: flex; gap: 6px; }
+    .lang-row button { flex: 1; padding: 6px; border: 1px solid #334155; background: #131B2E; color: #E2E8F0; border-radius: 7px; cursor: pointer; font-size: 12px; }
+    .lang-row button.active { border-color: var(--cyan); color: var(--cyan); font-weight: bold; }
+    .main { min-width: 0; }
+    .top { background: #fff; padding: 14px 24px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+    .apikey-wrap { display: flex; align-items: center; gap: 8px; }
+    .apikey-wrap input { padding: 7px 10px; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 13px; width: 200px; }
+    .content { padding: 22px; max-width: 1240px; margin: auto; }
+    .view { display: none; }
+    .view.active { display: block; }
+    .hero { background: linear-gradient(115deg, #0A0F1E, #1D3557); color: #fff; border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .hero h1 { margin: 0 0 8px; font-size: 24px; color: var(--gold); }
+    .hero p { margin: 0; color: #CBD5E1; font-size: 14px; max-width: 680px; }
+    .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 16px 0; }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 13px; padding: 16px; margin-bottom: 12px; }
+    .card strong.kpi { font-size: 26px; display: block; color: var(--navy); }
+    .field { margin-bottom: 10px; }
+    .field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+    .field input, .field select, .field textarea { width: 100%; padding: 9px; border: 1px solid #CBD5E1; border-radius: 8px; font-family: inherit; }
+    .btn { background: var(--gold); color: #0A0F1E; border: 0; border-radius: 8px; padding: 9px 15px; font-weight: bold; cursor: pointer; }
+    .btn.dark { background: var(--navy); color: #fff; }
+    .btn.cyan { background: var(--cyan); color: #0A0F1E; }
+    .pill { display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: bold; background: #E2E8F0; color: #0F172A; }
+    .pill.mobile { background: #E0F2FE; color: #0369A1; }
+    .pill.false { background: #FFE4E6; color: #BE123C; }
+    .pill.supported { background: #D1FAE5; color: #047857; }
+    .pill.misleading { background: #FEF3C7; color: #B45309; }
+    .item { padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; margin-top: 8px; background: #F8FAFC; }
+    .audit-box { background: #0A0F1E; color: #E2E8F0; padding: 10px 12px; border-radius: 9px; margin-top: 8px; font-size: 12px; }
+    .toast { position: fixed; bottom: 20px; left: 20px; background: var(--navy); color: #fff; padding: 10px 16px; border-radius: 9px; display: none; z-index: 99; border: 1px solid var(--cyan); }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .side { height: auto; position: static; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="side">
+      <div class="logo">
+        <span data-i18n="brand">تثبّت | عين نينوى</span>
+        <small data-i18n="brandSub">غرفة التحقق المتصلة بـ Fake Away</small>
+      </div>
+      <button class="nav-btn active" data-v="home" data-i18n="navHome">لوحة التحقق</button>
+      <button class="nav-btn" data-v="search" data-i18n="navSearch">بحث الأخبار (GDELT)</button>
+      <button class="nav-btn" data-v="claims" data-i18n="navClaims">سجل الادعاءات والمراجعة</button>
+      <button class="nav-btn" data-v="compare" data-i18n="navCompare">المقارنة اللغوية المطبّعة</button>
+      <button class="nav-btn" data-v="import" data-i18n="navImport">أرشيف CSV والتصدير</button>
+      <button class="nav-btn" data-v="about" data-i18n="navAbout">الفريق البرمجي (Blue Team)</button>
+
+      <div class="lang-box">
+        <label data-i18n="langLabel">اللغة / Language / زمان</label>
+        <div class="lang-row">
+          <button onclick="setLang('ar')" id="lb-ar" class="active">عربي</button>
+          <button onclick="setLang('en')" id="lb-en">EN</button>
+          <button onclick="setLang('ckb')" id="lb-ckb">کوردی</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="top">
+        <h2 id="title" style="margin:0;font-size:18px;">لوحة التحقق</h2>
+        <div class="apikey-wrap">
+          <input id="apiKeyInput" type="password" placeholder="X-API-Key (tathabbat-dev-key)">
+          <button class="btn dark" onclick="saveApiKey()" data-i18n="saveKey">حفظ المفتاح</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section id="v-home" class="view active">
+          <div class="hero">
+            <div>
+              <h1 data-i18n="heroTitle">غرفة تثبّت لتدقيق الحقائق + تطبيق Fake Away</h1>
+              <p data-i18n="heroDesc">اربط تطبيق Fake Away على الهواتف بغرفة التحقق البشرية: يستقبل البلاغات الصوتية والنصية المشبوهة، يوثق الأدلة وسجل التدقيق، ويرسل الأحكام المعتمدة فوراً للهواتف.</p>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="card"><small data-i18n="statArticles">المقالات</small><strong class="kpi" id="sa">0</strong></div>
+            <div class="card"><small data-i18n="statClaims">الادعاءات</small><strong class="kpi" id="sc">0</strong></div>
+            <div class="card"><small data-i18n="statEvidence">الأدلة</small><strong class="kpi" id="se">0</strong></div>
+            <div class="card"><small data-i18n="statReview">قيد المراجعة</small><strong class="kpi" id="sr">0</strong></div>
+            <div class="card"><small data-i18n="statMobile">بلاغات Fake Away</small><strong class="kpi" id="sm">0</strong></div>
+          </div>
+        </section>
+
+        <section id="v-search" class="view">
+          <div class="card">
+            <div class="field">
+              <label data-i18n="searchHint">ابحث في أخبار GDELT الحية</label>
+              <input id="q" placeholder="Mosul OR Nineveh OR Erbil">
+            </div>
+            <button class="btn" id="find" data-i18n="searchBtn">بحث الآن</button>
+            <p id="meta" style="font-size:12px;color:var(--muted);"></p>
+            <div id="results"></div>
+          </div>
+        </section>
+
+        <section id="v-claims" class="view">
+          <div class="card">
+            <h3 style="margin-top:0;" data-i18n="newClaimTitle">تسجيل ادعاء جديد</h3>
+            <div class="field">
+              <label data-i18n="claimTextLabel">نص الادعاء</label>
+              <textarea id="ct" rows="3"></textarea>
+            </div>
+            <div class="cols">
+              <div class="field">
+                <label data-i18n="claimLangLabel">اللغة</label>
+                <select id="cl"><option value="ar">ar</option><option value="ckb">ckb</option><option value="en">en</option></select>
+              </div>
+              <div class="field">
+                <label data-i18n="claimPubLabel">المصدر / الناشر</label>
+                <input id="cp">
+              </div>
+            </div>
+            <button class="btn" id="create" data-i18n="saveClaimBtn">حفظ الادعاء</button>
+          </div>
+          <div id="claimlist"></div>
+        </section>
+
+        <section id="v-compare" class="view">
+          <div class="card">
+            <div class="field">
+              <label data-i18n="compareHint">قارن أي نص (يدعم التطبيع العربي والكردي والإنكليزي)</label>
+              <input id="cq">
+            </div>
+            <button class="btn cyan" id="cmp" data-i18n="compareBtn">مقارنة الآن</button>
+            <div id="matches"></div>
+          </div>
+        </section>
+
+        <section id="v-import" class="view">
+          <div class="card">
+            <div class="field">
+              <label data-i18n="csvHint">استيراد أرشيف CSV (يتطلب title,url ومفتاح X-API-Key)</label>
+              <input type="file" id="csv" accept=".csv">
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn" id="upload" data-i18n="csvBtn">استيراد CSV</button>
+              <button class="btn dark" onclick="exportArchive()" data-i18n="exportBtn">تصدير JSON</button>
+            </div>
+            <pre id="imp" style="font-size:12px;overflow:auto;margin-top:12px;"></pre>
+          </div>
+        </section>
+
+        <section id="v-about" class="view">
+          <div class="hero" style="margin-bottom:14px;">
+            <div>
+              <h1>Blue Team — Created in Mosul Space</h1>
+              <p><a href="https://mosulspace.org/" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);font-weight:bold;">Mosul Space – Innovation Hub that promote Business and Technology</a></p>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0;color:var(--navy);">عدنان سلطان حسن</h3>
+            <p style="color:var(--muted);margin:4px 0 10px;">لطلب التصميم والبرامج — <strong>07740851231</strong></p>
+            <a class="btn" href="https://wa.me/9647740851231" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none;">تواصل عبر واتساب</a>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0;" data-i18n="teamMembers">أعضاء الفريق البرمجي</h3>
+            <div class="item"><b>ايه اياد ثامر</b></div>
+            <div class="item"><b>سدرة احمد محمد شيت</b></div>
+            <div class="item"><b>خالد محمد علي</b></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const I18N = {
+      ar: {
+        dir: 'rtl', brand: 'تثبّت | عين نينوى', brandSub: 'غرفة التحقق المتصلة بـ Fake Away',
+        navHome: 'لوحة التحقق', navSearch: 'بحث الأخبار (GDELT)', navClaims: 'سجل الادعاءات والمراجعة',
+        navCompare: 'المقارنة اللغوية المطبّعة', navImport: 'أرشيف CSV والتصدير', navAbout: 'الفريق البرمجي (Blue Team)', langLabel: 'اللغة / Language / زمان',
+        teamMembers: 'أعضاء الفريق البرمجي',
+        saveKey: 'حفظ المفتاح', heroTitle: 'غرفة تثبّت لتدقيق الحقائق + تطبيق Fake Away',
+        heroDesc: 'اربط تطبيق Fake Away على الهواتف بغرفة التحقق البشرية: يستقبل البلاغات الصوتية والنصية المشبوهة، يوثق الأدلة وسجل التدقيق، ويرسل الأحكام المعتمدة فوراً للهواتف.',
+        statArticles: 'المقالات', statClaims: 'الادعاءات', statEvidence: 'الأدلة', statReview: 'قيد المراجعة', statMobile: 'بلاغات Fake Away',
+        searchHint: 'ابحث في أخبار GDELT الحية', searchBtn: 'بحث الآن', newClaimTitle: 'تسجيل ادعاء جديد',
+        claimTextLabel: 'نص الادعاء', claimLangLabel: 'اللغة', claimPubLabel: 'المصدر / الناشر', saveClaimBtn: 'حفظ الادعاء',
+        compareHint: 'قارن أي نص (يدعم التطبيع العربي والكردي والإنكليزي)', compareBtn: 'مقارنة الآن',
+        csvHint: 'استيراد أرشيف CSV (يتطلب title,url ومفتاح X-API-Key)', csvBtn: 'استيراد CSV', exportBtn: 'تصدير JSON'
+      },
+      en: {
+        dir: 'ltr', brand: 'Tathabbat | Eye of Nineveh', brandSub: 'Newsroom Connected to Fake Away',
+        navHome: 'Dashboard', navSearch: 'News Search (GDELT)', navClaims: 'Claims & Review Queue',
+        navCompare: 'Normalized Similarity', navImport: 'CSV Archive & Export', navAbout: 'Blue Team (About)', langLabel: 'Language',
+        teamMembers: 'Team Members',
+        saveKey: 'Save Key', heroTitle: 'Tathabbat Fact-Check Newsroom + Fake Away',
+        heroDesc: 'Bridge Fake Away mobile forensics with human fact-checkers: receive mobile escalations, attach evidence and audit trails, and return verified verdicts directly to phones.',
+        statArticles: 'Articles', statClaims: 'Claims', statEvidence: 'Evidence', statReview: 'In Review', statMobile: 'Fake Away Alerts',
+        searchHint: 'Search live GDELT news', searchBtn: 'Search', newClaimTitle: 'Submit Claim',
+        claimTextLabel: 'Claim text', claimLangLabel: 'Language', claimPubLabel: 'Publisher', saveClaimBtn: 'Save Claim',
+        compareHint: 'Compare claim across AR / CKB / EN normalized records', compareBtn: 'Compare',
+        csvHint: 'Import UTF-8 CSV archive (title,url + X-API-Key)', csvBtn: 'Import CSV', exportBtn: 'Export JSON'
+      },
+      ckb: {
+        dir: 'rtl', brand: 'تەسبەت | چاوی نەینەوا', brandSub: 'ژووری دڵنیابوونی بەستراو بە Fake Away',
+        navHome: 'داشبۆرد', navSearch: 'گەڕانی هەواڵ (GDELT)', navClaims: 'تۆماری بانگەشە و پێداچوونەوە',
+        navCompare: 'بەراوردکردنی زمانی', navImport: 'ئەرشیفی CSV و دەرکردن', navAbout: 'تیمی پڕۆگرامسازی (Blue Team)', langLabel: 'زمان',
+        teamMembers: 'ئەندامانی تیم',
+        saveKey: 'پاشەکەوت', heroTitle: 'ژووری تەسبەت بۆ دڵنیابوون + ئەپی Fake Away',
+        heroDesc: 'ئەپی Fake Away ببەستەوە بە ژووری دڵنیابوونی مرۆیی: ڕاپۆرتە گوماناوییەکان وەردەگرێت، بەڵگە و تۆماری وردبینی تۆمار دەکات، و بڕیارە پشتڕاستکراوەکان دەگەڕێنێتەوە بۆ مۆبایل.',
+        statArticles: 'بابەتەکان', statClaims: 'بانگەشەکان', statEvidence: 'بەڵگەکان', statReview: 'لە پێداچوونەوەدا', statMobile: 'ڕاپۆرتی Fake Away',
+        searchHint: 'گەڕان لە هەواڵە زیندووەکانی GDELT', searchBtn: 'گەڕان', newClaimTitle: 'تۆمارکردنی بانگەشەی نوێ',
+        claimTextLabel: 'دەقی بانگەشە', claimLangLabel: 'زمان', claimPubLabel: 'سەرچاوە', saveClaimBtn: 'پاشەکەوتکردن',
+        compareHint: 'بەراوردکردن بە کوردی و عەرەبی و ئینگلیزی', compareBtn: 'بەراورد',
+        csvHint: 'هاوردەکردنی CSV (ستوونەکانی title,url + X-API-Key)', csvBtn: 'هاوردەکردنی CSV', exportBtn: 'دەرکردنی JSON'
+      }
+    };
+
+    const $ = id => document.getElementById(id);
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+    }
+    if ('caches' in window) {
+      caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
+    }
+    const savedKey = sessionStorage.getItem('tathabbat_key') || 'tathabbat-dev-key';
+    $('apiKeyInput').value = savedKey;
+
+    function saveApiKey() {
+      sessionStorage.setItem('tathabbat_key', $('apiKeyInput').value.trim());
+      toast('X-API-Key updated');
+    }
+
+    function authHeaders(extra = {}) {
+      const k = $('apiKeyInput').value.trim();
+      return k ? { ...extra, 'X-API-Key': k } : extra;
+    }
+
+    function safeHref(url) {
+      const u = String(url || '').trim();
+      return /^https?:\/\//i.test(u) ? esc(u) : '#';
+    }
+
+    function esc(s) {
+      return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    function toast(msg) {
+      $('toast').textContent = msg;
+      $('toast').style.display = 'block';
+      setTimeout(() => $('toast').style.display = 'none', 2600);
+    }
+
+    function setLang(lang) {
+      const pack = I18N[lang] || I18N.ar;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = pack.dir;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (pack[key]) el.textContent = pack[key];
+      });
+      ['ar', 'en', 'ckb'].forEach(l => $('lb-' + l).classList.toggle('active', l === lang));
+      const activeBtn = document.querySelector('.nav-btn.active');
+      if (activeBtn) $('title').textContent = activeBtn.textContent;
+    }
+
+    async function api(url, opts = {}) {
+      const r = await fetch(url, opts);
+      const d = await r.json();
+      if (!r.ok) throw Error(d.detail || 'Request failed');
+      return d;
+    }
+
+    function go(viewId) {
+      document.querySelectorAll('.view').forEach(x => x.classList.remove('active'));
+      $('v-' + viewId).classList.add('active');
+      document.querySelectorAll('[data-v]').forEach(b => b.classList.toggle('active', b.dataset.v === viewId));
+      const activeBtn = document.querySelector('.nav-btn.active');
+      if (activeBtn) $('title').textContent = activeBtn.textContent;
+      if (viewId === 'claims') loadClaims();
+      if (viewId === 'home') stats();
+    }
+    document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => go(b.dataset.v));
+
+    async function stats() {
+      try {
+        const s = await api('/api/stats');
+        $('sa').textContent = s.articles;
+        $('sc').textContent = s.claims;
+        $('se').textContent = s.evidence;
+        $('sr').textContent = s.in_review;
+        $('sm').textContent = s.mobile_escalations;
+      } catch (e) { toast(e.message); }
+    }
+
+    $('find').onclick = async () => {
+      try {
+        const d = await api('/api/search?q=' + encodeURIComponent($('q').value.trim()));
+        $('meta').textContent = `${d.returned} articles from GDELT DOC. ${d.coverage_note}`;
+        $('results').innerHTML = d.articles.map(a =>
+          `<div class="item"><a target="_blank" rel="noopener noreferrer" href="${safeHref(a.url)}">${esc(a.title)}</a><small><br>${esc(a.domain)} · ${esc(a.language)} · ${esc(a.published_at)}</small></div>`
+        ).join('') || 'No results';
+        stats();
+      } catch (e) { toast(e.message); }
+    };
+
+    $('create').onclick = async () => {
+      try {
+        await api('/api/claims', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: $('ct').value, language: $('cl').value, publisher: $('cp').value || null })
+        });
+        $('ct').value = '';
+        toast('Claim saved');
+        loadClaims();
+        stats();
+      } catch (e) { toast(e.message); }
+    };
+
+    async function loadClaims() {
+      try {
+        const d = await api('/api/claims');
+        $('claimlist').innerHTML = d.claims.map(c => {
+          const mobileBadge = c.source_app === 'fake_away_android'
+            ? `<span class="pill mobile">Fake Away (${c.scan_type || 'SCAN'} ${c.mobile_risk_score != null ? Math.round(c.mobile_risk_score * 100) + '%' : ''})</span>`
+            : '';
+          return `
+            <div class="card">
+              <b>${esc(c.text)}</b>
+              <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;">
+                <span class="pill ${esc(c.status)}">${esc(c.status)}</span>
+                ${mobileBadge}
+                <span class="pill">${esc(c.language)}</span>
+              </div>
+              ${c.rationale ? `<p style="font-size:13px;color:#334155;"><b>${esc(c.reviewer || '')}:</b> ${esc(c.rationale)}</p>` : ''}
+              <details style="margin-top:8px;">
+                <summary style="cursor:pointer;font-size:13px;color:#0369A1;" onclick="loadAudit(${c.id})">إضافة دليل / مراجعة / سجل التدقيق (Audit)</summary>
+                <div class="cols" style="margin-top:10px;">
+                  <div>
+                    <div class="field"><label>Label</label><input id="el${c.id}"></div>
+                    <div class="field"><label>URL (https://...)</label><input id="eu${c.id}"></div>
+                    <div class="field"><label>Publisher</label><input id="ep${c.id}"></div>
+                    <button class="btn" onclick="ev(${c.id})">Add Evidence</button>
+                  </div>
+                  <div>
+                    <div class="field"><label>Status</label>
+                      <select id="st${c.id}">
+                        <option value="in_review">in_review</option>
+                        <option value="supported">supported</option>
+                        <option value="false">false</option>
+                        <option value="misleading">misleading</option>
+                        <option value="insufficient">insufficient</option>
+                      </select>
+                    </div>
+                    <div class="field"><label>Reviewer</label><input id="rv${c.id}"></div>
+                    <div class="field"><label>Rationale</label><textarea id="ra${c.id}"></textarea></div>
+                    <button class="btn dark" onclick="rv(${c.id})">Submit Review (API Key)</button>
+                  </div>
+                </div>
+                <div id="aud${c.id}" class="audit-box">Loading audit trail...</div>
+              </details>
+              ${c.evidence.map(e => `<div class="item"><a href="${safeHref(e.url)}" target="_blank" rel="noopener noreferrer">${esc(e.label)}</a><small><br>${esc(e.publisher)} · ${new Date(e.captured_at).toLocaleString()}</small></div>`).join('')}
+            </div>`;
+        }).join('') || '<div class="card">No claims yet.</div>';
+      } catch (e) { toast(e.message); }
+    }
+
+    window.loadAudit = async id => {
+      try {
+        const d = await api(`/api/claims/${id}/audit`);
+        $('aud' + id).innerHTML = d.audits.map(a =>
+          `<div>• <b>${esc(a.action)}</b> — ${esc(a.details || '')} <small style="color:#94A3B8">(${new Date(a.created_at).toLocaleString()})</small></div>`
+        ).join('') || 'No audit logs';
+      } catch (e) { $('aud' + id).textContent = e.message; }
+    };
+
+    window.ev = async id => {
+      try {
+        await api(`/api/claims/${id}/evidence`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ label: $('el' + id).value, url: $('eu' + id).value, publisher: $('ep' + id).value || null })
+        });
+        toast('Evidence saved');
+        loadClaims();
+        stats();
+      } catch (e) { toast(e.message); }
+    };
+
+    window.rv = async id => {
+      try {
+        await api(`/api/claims/${id}/review`, {
+          method: 'PATCH',
+          headers: authHeaders({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify({ status: $('st' + id).value, reviewer: $('rv' + id).value, rationale: $('ra' + id).value })
+        });
+        toast('Review saved');
+        loadClaims();
+        stats();
+      } catch (e) { toast(e.message); }
+    };
+
+    $('cmp').onclick = async () => {
+      try {
+        const d = await api('/api/compare?q=' + encodeURIComponent($('cq').value.trim()));
+        $('matches').innerHTML = d.matches.map(x =>
+          `<div class="item"><b>${esc(x.text)}</b><small><br>${esc(x.type)} · ${(x.score * 100).toFixed(1)}% ${x.url ? `· <a href="${safeHref(x.url)}" target="_blank" rel="noopener noreferrer">source</a>` : ''}</small></div>`
+        ).join('') || 'No matches';
+      } catch (e) { toast(e.message); }
+    };
+
+    $('upload').onclick = async () => {
+      const f = $('csv').files[0];
+      if (!f) return toast('Choose a CSV file');
+      const fd = new FormData();
+      fd.append('file', f);
+      try {
+        const d = await api('/api/import/csv', { method: 'POST', headers: authHeaders(), body: fd });
+        $('imp').textContent = JSON.stringify(d, null, 2);
+        stats();
+      } catch (e) { toast(e.message); }
+    };
+
+    async function exportArchive() {
+      try {
+        const d = await api('/api/export', { headers: authHeaders() });
+        $('imp').textContent = JSON.stringify(d, null, 2);
+      } catch (e) { toast(e.message); }
+    }
+
+    stats();
+  </script>
+</body>
+</html>
