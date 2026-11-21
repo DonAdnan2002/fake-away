@@ -1,94 +1,141 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0A0F1E">
-  <meta name="description" content="Fake Away — تطبيق أندرويد مجاني يعمل أوفلاين لكشف التزييف العميق في الصوت والصور والأخبار عبر الأيقونة العائمة. من تطوير Blue Team في Mosul Space.">
-  <title>Fake Away — كشف التزييف العميق أوفلاين | تحميل مجاني للأندرويد</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@400;500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fake Away — تحقق قبل أن تصدّق | كشف التزييف العميق بدون إنترنت</title>
+  <meta name="description" content="تطبيق Fake Away المجاني لكشف التزييف العميق في الصوت والصور والأخبار 100% على هاتفك بدون إنترنت، مع مختبر الشائعات والدرع العائم وخادم تثبّت. تطوير Blue Team في Mosul Space." />
+  <meta property="og:title" content="Fake Away — تحقق قبل أن تصدّق" />
+  <meta property="og:description" content="كشف تزييف الصوت والصور والأخبار بدون إنترنت، مختبر الشائعات، الدرع العائم، 100% مجاني." />
+  <meta property="og:image" content="./screenshots/screen-1-home.jpg" />
+  <link rel="icon" type="image/jpeg" href="./screenshots/screen-4-icon.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #070B16;
-      --bg-elevated: #0E1528;
-      --surf: #131B2E;
-      --surf2: #1A2540;
-      --line: rgba(255, 255, 255, 0.09);
-      --line-accent: rgba(56, 189, 248, 0.36);
-      --tx: #F1F5F9;
-      --mut: #94A3B8;
-      --cyan: #38BDF8;
-      --real: #00E5A0;
-      --warn: #FFB703;
-      --fake: #FF4D6D;
-      --r: 22px;
-      --rs: 14px;
-      --font-rtl: "Tajawal", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
-      --font-ltr: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      --bg: #11100D;
+      --bg-elev: #1A1814;
+      --bg-card: #211E19;
+      --bg-card-hover: #28241E;
+      --border: rgba(239, 236, 230, 0.10);
+      --border-strong: rgba(239, 236, 230, 0.22);
+      --text: #F6F3EC;
+      --text-muted: #B6AFA2;
+      --text-dim: #888175;
+      --cream: #EFECE6;
+      --cream-text: #14120E;
+      --emerald: #00E5A0;
+      --emerald-soft: rgba(0, 229, 160, 0.14);
+      --amber: #FFB703;
+      --amber-soft: rgba(255, 183, 3, 0.14);
+      --crimson: #FF4D6D;
+      --crimson-soft: rgba(255, 77, 109, 0.14);
+      --sky: #38BDF8;
+      --sky-soft: rgba(56, 189, 248, 0.14);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
+      --container: 1180px;
     }
 
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--tx);
-      font-family: var(--font-rtl);
-      font-size: 16px;
-      line-height: 1.75;
-      overflow-x: hidden;
-      padding-bottom: env(safe-area-inset-bottom);
-    }
-    html[dir="ltr"] body { font-family: var(--font-ltr); }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
       background:
-        radial-gradient(60% 38% at 85% -4%, rgba(56, 189, 248, 0.19), transparent 70%),
-        radial-gradient(48% 34% at 8% 36%, rgba(0, 229, 160, 0.11), transparent 70%),
-        radial-gradient(50% 35% at 50% 106%, rgba(255, 77, 109, 0.08), transparent 70%);
+        radial-gradient(900px 500px at 85% -5%, rgba(0, 229, 160, 0.10), transparent 60%),
+        radial-gradient(800px 480px at 10% 12%, rgba(255, 183, 3, 0.08), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Cairo', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    html[dir="ltr"] body {
+      font-family: 'Plus Jakarta Sans', 'Cairo', system-ui, -apple-system, sans-serif;
     }
 
-    .wrap { width: min(1080px, 100%); margin: 0 auto; padding: 0 clamp(14px, 4vw, 28px); }
-    a { color: var(--cyan); text-decoration: none; }
-    h1, h2, h3 { margin: 0 0 10px; line-height: 1.3; }
-    p { margin: 0 0 12px; color: var(--mut); }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; }
 
-    /* Sticky Topbar */
-    .topbar-wrap {
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header / Navbar */
+    .navbar {
       position: sticky;
       top: 0;
-      z-index: 40;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: rgba(7, 11, 22, 0.82);
-      border-bottom: 1px solid var(--line);
+      z-index: 60;
+      background: rgba(17, 16, 13, 0.84);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
     }
-    .topbar {
+    .nav-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 12px 0;
-      gap: 12px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 70px;
     }
-    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; font-size: 19px; color: #fff; }
-    .brand small { display: block; font-size: 12px; font-weight: 500; color: var(--cyan); }
-    .top-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .nav-links { display: flex; gap: 6px; flex-wrap: wrap; font-size: 14px; }
-    .nav-links a { color: var(--mut); padding: 6px 10px; border-radius: 8px; transition: 0.15s; }
-    .nav-links a:hover { color: var(--cyan); background: rgba(56, 189, 248, 0.1); }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      border: 1px solid var(--border-strong);
+      object-fit: cover;
+    }
+    .brand-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      border: 1px solid rgba(0, 229, 160, 0.28);
+    }
 
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.94rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
     .lang-switch {
       display: inline-flex;
-      background: var(--surf);
-      border: 1px solid var(--line);
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
       border-radius: 999px;
       padding: 3px;
       gap: 2px;
@@ -96,734 +143,1487 @@
     .lang-btn {
       border: 0;
       background: transparent;
-      color: var(--mut);
-      font-family: inherit;
-      font-size: 12px;
+      color: var(--text-muted);
+      font-size: 0.78rem;
       font-weight: 700;
-      padding: 6px 11px;
+      padding: 5px 10px;
       border-radius: 999px;
-      cursor: pointer;
-      transition: 0.15s;
+      transition: all 0.2s;
+      white-space: nowrap;
     }
-    .lang-btn.active { background: var(--cyan); color: #06121A; }
-
-    /* Hero */
-    .hero { text-align: center; padding: clamp(34px, 6vw, 64px) 0 28px; }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border-radius: 999px;
-      background: rgba(0, 229, 160, 0.12);
-      border: 1px solid rgba(0, 229, 160, 0.35);
-      color: var(--real);
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 16px;
+    .lang-btn.active {
+      background: var(--cream);
+      color: var(--cream-text);
     }
-    .hero h1 { font-size: clamp(27px, 5vw, 46px); font-weight: 800; color: #fff; max-width: 820px; margin: 0 auto 14px; }
-    .hero-desc { max-width: 700px; margin: 0 auto 24px; font-size: clamp(15px, 2.2vw, 18px); color: #CBD5E1; }
 
-    .cta-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      min-height: 48px;
-      padding: 12px 24px;
-      border-radius: 14px;
-      font-family: inherit;
-      font-size: 15px;
+      gap: 9px;
+      border-radius: 999px;
       font-weight: 700;
-      border: 0;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      font-size: 0.95rem;
+      padding: 12px 22px;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, box-shadow 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
     }
-    .btn:hover { transform: translateY(-2px); }
+    .btn:hover { transform: translateY(-1px); }
     .btn-primary {
-      background: linear-gradient(135deg, var(--real), #00C48C);
-      color: #06121A;
-      box-shadow: 0 10px 28px rgba(0, 229, 160, 0.25);
+      background: var(--cream);
+      color: var(--cream-text);
+      box-shadow: 0 10px 28px rgba(239, 236, 230, 0.14);
     }
-    .btn-secondary { background: var(--surf2); color: var(--tx); border: 1px solid var(--line-accent); }
+    .btn-primary:hover { background: #ffffff; }
+    .btn-emerald {
+      background: var(--emerald);
+      color: #072219;
+      box-shadow: 0 10px 28px rgba(0, 229, 160, 0.22);
+    }
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+    .btn-outline:hover { background: rgba(255, 255, 255, 0.09); }
+    .btn-sm { padding: 8px 15px; font-size: 0.85rem; }
 
-    .trust-strip {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px 20px;
-      font-size: 13px;
-      color: var(--mut);
-      margin-top: 8px;
-    }
-    .trust-strip span { display: inline-flex; align-items: center; gap: 6px; }
-
-    /* Sections */
-    section { padding: clamp(26px, 4vw, 42px) 0; }
-    .sec-title { font-size: clamp(22px, 3.6vw, 28px); font-weight: 800; color: #fff; margin-bottom: 6px; text-align: center; }
-    .sec-sub { text-align: center; max-width: 640px; margin: 0 auto 24px; font-size: 15px; }
-
-    /* Video Card */
-    .video-card {
-      background: var(--surf);
-      border: 1px solid var(--line-accent);
-      border-radius: var(--r);
-      padding: clamp(10px, 2vw, 16px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.36);
-    }
-    .video-frame {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      border-radius: var(--rs);
-      overflow: hidden;
-      background: #050811;
-    }
-    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    .video-caption {
-      display: flex;
-      justify-content: space-between;
+    .hamburger {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg-elev);
+      color: var(--text);
       align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 12px 6px 4px;
-      font-size: 14px;
-      color: #CBD5E1;
+      justify-content: center;
+      font-size: 1.25rem;
     }
 
-    /* Feature Grid */
-    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-    .card {
-      background: var(--surf);
-      border: 1px solid var(--line);
-      border-radius: var(--r);
-      padding: 22px;
+    .mobile-drawer {
+      display: none;
+      border-top: 1px solid var(--border);
+      background: var(--bg-elev);
+      padding: 14px 20px 20px;
+    }
+    .mobile-drawer.open { display: block; }
+    .mobile-drawer-links {
       display: flex;
       flex-direction: column;
-    }
-    .card-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
+      gap: 10px;
       margin-bottom: 14px;
-      font-size: 22px;
-      background: rgba(56, 189, 248, 0.14);
-      color: var(--cyan);
     }
-    .card h3 { font-size: 18px; color: #fff; }
-    .card ul { margin: 10px 0 0; padding-inline-start: 18px; color: var(--mut); font-size: 14px; }
-    .card li { margin-bottom: 7px; }
+    .mobile-drawer-links a {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      font-weight: 600;
+      color: var(--text);
+    }
 
-    /* Screenshots Gallery (Grid on Desktop/Tablet, Snap Carousel on Phones) */
-    .shots-grid {
+    /* Hero */
+    .hero {
+      padding: 56px 0 46px;
+    }
+    .hero-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 40px;
+      align-items: center;
     }
-    .shot {
-      margin: 0;
-      background: var(--surf);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 12px;
-      cursor: pointer;
-      transition: border-color 0.2s, transform 0.2s;
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
     }
-    .shot:hover { border-color: var(--cyan); transform: translateY(-3px); }
-    .shot-bezel {
-      border-radius: 16px;
-      overflow: hidden;
-      border: 2px solid rgba(255, 255, 255, 0.08);
-      background: #060A15;
-    }
-    .shot img {
-      width: 100%;
-      aspect-ratio: 9 / 19.5;
-      object-fit: cover;
-      display: block;
-    }
-    .shot figcaption {
-      margin-top: 10px;
-      font-size: 13px;
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: #E2E8F0;
-      text-align: center;
+      border: 1px solid var(--border);
+      background: var(--bg-elev);
+      color: var(--text-muted);
     }
-    .swipe-hint { display: none; text-align: center; font-size: 12px; color: var(--cyan); margin-bottom: 10px; }
+    .pill-emerald {
+      background: var(--emerald-soft);
+      border-color: rgba(0, 229, 160, 0.3);
+      color: var(--emerald);
+    }
+    .pill-amber {
+      background: var(--amber-soft);
+      border-color: rgba(255, 183, 3, 0.3);
+      color: var(--amber);
+    }
 
-    /* Download Box */
-    .download-box {
-      background: linear-gradient(135deg, rgba(19, 27, 46, 0.98), rgba(26, 37, 64, 0.98));
-      border: 1.5px solid rgba(0, 229, 160, 0.45);
-      border-radius: var(--r);
-      padding: clamp(22px, 4vw, 34px);
-      text-align: center;
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4.4vw, 3.35rem);
+      line-height: 1.18;
+      font-weight: 900;
+      letter-spacing: -0.02em;
     }
-    .steps {
+    .hero h1 .accent { color: var(--emerald); }
+    .hero-lead {
+      margin: 0 0 24px;
+      font-size: clamp(1rem, 1.4vw, 1.14rem);
+      color: var(--text-muted);
+      max-width: 60ch;
+    }
+
+    .privacy-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 229, 160, 0.08);
+      border: 1px solid rgba(0, 229, 160, 0.24);
+      margin-bottom: 24px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #DDFDF1;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+    .apk-meta {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-      margin: 22px 0 4px;
-      text-align: start;
+      max-width: 560px;
     }
-    .step {
-      background: rgba(10, 15, 30, 0.68);
-      border: 1px solid var(--line);
-      border-radius: var(--rs);
-      padding: 14px;
-      font-size: 14px;
+    .meta-box {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
     }
-    .step strong { color: var(--real); display: block; margin-bottom: 4px; }
+    .meta-label {
+      font-size: 0.76rem;
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+    .meta-val {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-top: 2px;
+    }
 
-    /* Team Card */
-    .team-card {
-      background: var(--surf);
-      border: 1px solid var(--line-accent);
-      border-radius: var(--r);
-      padding: clamp(18px, 3.5vw, 28px);
+    /* Hero Phone Showcase */
+    .hero-showcase {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 0;
     }
-    .team-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 18px; margin-top: 16px; }
-    .member-chip {
+    .phone-frame {
+      width: min(310px, 84vw);
+      background: #0A0907;
+      border-radius: 36px;
+      padding: 11px;
+      border: 2px solid rgba(239, 236, 230, 0.16);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      z-index: 2;
+    }
+    .phone-frame img {
+      border-radius: 26px;
+      width: 100%;
+      aspect-ratio: 9 / 19.5;
+      object-fit: cover;
+    }
+    .phone-float-card {
+      position: absolute;
+      z-index: 3;
+      background: rgba(26, 24, 20, 0.94);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      padding: 11px 14px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+      max-width: 210px;
+    }
+    .phone-float-top {
+      top: 28px;
+      inset-inline-start: -10px;
+    }
+    .phone-float-bottom {
+      bottom: 34px;
+      inset-inline-end: -10px;
+    }
+    .float-title {
+      font-size: 0.8rem;
+      font-weight: 800;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 12px 14px;
-      background: var(--surf2);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      margin-bottom: 8px;
-      font-weight: 700;
-      color: #F8FAFC;
+      gap: 6px;
     }
-    .wa-btn {
+    .float-sub {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* Sections */
+    section { padding: 60px 0; }
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+    .section-kicker {
+      color: var(--emerald);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .section-title {
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+      font-weight: 900;
+      line-height: 1.25;
+    }
+    .section-desc {
+      margin: 0;
+      color: var(--text-muted);
+      max-width: 68ch;
+      font-size: 1rem;
+    }
+
+    /* Feature Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card:hover {
+      border-color: var(--border-strong);
+      background: var(--bg-card);
+      transform: translateY(-2px);
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 9px 15px;
-      border-radius: 10px;
-      background: var(--real);
-      color: #06121A;
+      justify-content: center;
+      font-size: 1.3rem;
       font-weight: 800;
-      font-size: 13px;
+    }
+    .icon-emerald { background: var(--emerald-soft); color: var(--emerald); }
+    .icon-amber { background: var(--amber-soft); color: var(--amber); }
+    .icon-crimson { background: var(--crimson-soft); color: var(--crimson); }
+    .icon-sky { background: var(--sky-soft); color: var(--sky); }
+    .card h3 {
+      margin: 0;
+      font-size: 1.12rem;
+      font-weight: 800;
+    }
+    .card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+    .mini-tag {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
     }
 
-    footer {
-      text-align: center;
-      padding: 24px 0 86px;
-      color: var(--mut);
-      font-size: 13px;
-      border-top: 1px solid var(--line);
-      margin-top: 24px;
-    }
-
-    /* Sticky Mobile Download Bar */
-    .mobile-sticky-cta {
-      display: none;
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 45;
-      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-      background: rgba(10, 15, 30, 0.94);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid var(--line-accent);
+    /* Rumor Lab Highlight */
+    .split-panel {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
       align-items: center;
-      justify-content: space-between;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+    }
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
+      margin: 18px 0;
+    }
+    .metric-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .metric-pill strong {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+    .metric-pill span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Models & Settings Strip */
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .model-row {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .model-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      background: var(--emerald-soft);
+      color: var(--emerald);
+      white-space: nowrap;
+    }
+
+    /* Video Section */
+    .video-wrap {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      box-shadow: var(--shadow-lg);
+    }
+    .video-aspect {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+    }
+    .video-aspect iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .shot-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .shot-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-strong);
+    }
+    .shot-thumb {
+      background: #0B0A08;
+      padding: 14px 14px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .shot-thumb img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 16px 16px 0 0;
+    }
+    .shot-body {
+      padding: 15px 18px 18px;
+    }
+    .shot-title {
+      font-weight: 800;
+      font-size: 1rem;
+      margin: 0 0 4px;
+    }
+    .shot-caption {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.86rem;
     }
 
     /* Lightbox */
     .lightbox {
       position: fixed;
       inset: 0;
-      background: rgba(5, 8, 17, 0.94);
+      z-index: 100;
+      background: rgba(8, 7, 5, 0.92);
+      backdrop-filter: blur(10px);
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 100;
-      padding: 16px;
-      gap: 12px;
+      padding: 20px;
     }
     .lightbox.open { display: flex; }
-    .lightbox img { max-height: 86vh; max-width: 82vw; border-radius: 18px; border: 1.5px solid var(--cyan); }
-    .lb-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 1px solid var(--line-accent);
-      background: var(--surf2);
-      color: #fff;
-      font-size: 20px;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
+    .lightbox-inner {
+      max-width: 500px;
+      width: 100%;
+      background: var(--bg-elev);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      position: relative;
+      text-align: center;
     }
-    .lb-close { position: fixed; top: 16px; right: 16px; }
+    .lightbox-inner img {
+      max-height: 74vh;
+      margin: 0 auto 12px;
+      border-radius: 16px;
+      object-fit: contain;
+    }
+    .lightbox-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .lb-btn {
+      border: 1px solid var(--border-strong);
+      background: var(--bg-card);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
 
-    /* Responsive Breakpoints */
-    @media (max-width: 960px) {
-      .grid-3 { grid-template-columns: 1fr; }
-      .shots-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .team-grid { grid-template-columns: 1fr; }
+    /* Team & Mosul Space */
+    .team-banner {
+      background: linear-gradient(135deg, rgba(0, 229, 160, 0.10), rgba(255, 183, 3, 0.08));
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .member-card {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .member-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .member-name {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+    .member-role {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 42px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-grid, .split-panel { grid-template-columns: 1fr; }
+      .cards-grid, .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-links { display: none; }
+      .hamburger { display: inline-flex; }
+      .phone-float-top { inset-inline-start: 4px; }
+      .phone-float-bottom { inset-inline-end: 4px; }
     }
     @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .steps { grid-template-columns: 1fr; }
-      .swipe-hint { display: block; }
-      .shots-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 14px;
-        padding-bottom: 10px;
-        -webkit-overflow-scrolling: touch;
+      section { padding: 42px 0; }
+      .hero { padding: 34px 0 28px; }
+      .cards-grid, .gallery-grid, .models-grid, .team-grid, .apk-meta, .metric-strip {
+        grid-template-columns: 1fr;
       }
-      .shot {
-        flex: 0 0 74%;
-        scroll-snap-align: center;
-      }
-      .mobile-sticky-cta { display: flex; }
+      .nav-actions .btn-primary { display: none; }
+      .phone-float-card { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="topbar-wrap">
-    <div class="wrap">
-      <header class="topbar">
-        <div class="brand">
-          <svg width="38" height="38" viewBox="0 0 108 108" aria-hidden="true">
-            <rect width="108" height="108" rx="24" fill="#131B2E"/>
-            <path d="M54,22 L78,32.5 L78,54 C78,69.5 67.8,82 54,87.5 C40.2,82 30,69.5 30,54 L30,32.5 Z" fill="rgba(0,229,160,0.16)" stroke="#38BDF8" stroke-width="4"/>
-            <path d="M40,56 L40,52 M47,62 L47,46 M54,67 L54,41 M61,60 L61,48 M68,55 L68,53" stroke="#00E5A0" stroke-width="4" stroke-linecap="round"/>
-          </svg>
-          <div>
-            Fake Away
-            <small data-i="brandSub">درع كشف التزييف العميق أوفلاين</small>
-          </div>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <img src="./screenshots/screen-4-icon.jpg" alt="Fake Away Logo" />
+        <span>Fake Away</span>
+        <span class="brand-tag" data-i="badge_free">مجاني 100%</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#features" data-i="nav_features">المزايا الجديدة</a></li>
+        <li><a href="#rumor-lab" data-i="nav_lab">مختبر الشائعات</a></li>
+        <li><a href="#video" data-i="nav_video">الفيديو</a></li>
+        <li><a href="#screenshots" data-i="nav_screens">الواجهات</a></li>
+        <li><a href="#team" data-i="nav_team">الفريق</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button class="lang-btn active" data-lang="ar">العربية</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="ckb">کوردی</button>
         </div>
-        <div class="top-right">
-          <nav class="nav-links">
-            <a href="#video" data-i="navVideo">الفيديو</a>
-            <a href="#features" data-i="navFeatures">التقنيات</a>
-            <a href="#screenshots" data-i="navShots">الصور</a>
-            <a href="#download" data-i="navDownload">التحميل</a>
-            <a href="#team" data-i="navTeam">الفريق</a>
-          </nav>
-          <div class="lang-switch" role="group" aria-label="Language">
-            <button class="lang-btn active" id="btn-ar" onclick="setLang('ar')">العربية</button>
-            <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
-            <button class="lang-btn" id="btn-ckb" onclick="setLang('ckb')">کوردی</button>
-          </div>
-        </div>
-      </header>
+        <a class="btn btn-primary btn-sm" href="./downloads/FakeAway-arm64.apk" download data-i="nav_download">تحميل APK</a>
+        <button class="hamburger" id="menuBtn" aria-label="Menu">☰</button>
+      </div>
     </div>
-  </div>
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-links">
+        <a href="#features" data-i="nav_features">المزايا الجديدة</a>
+        <a href="#rumor-lab" data-i="nav_lab">مختبر الشائعات</a>
+        <a href="#video" data-i="nav_video">الفيديو</a>
+        <a href="#screenshots" data-i="nav_screens">الواجهات</a>
+        <a href="#team" data-i="nav_team">الفريق</a>
+      </div>
+      <a class="btn btn-primary" style="width:100%" href="./downloads/FakeAway-arm64.apk" download data-i="hero_dl_btn">تحميل التطبيق مجاناً (APK)</a>
+    </div>
+  </header>
 
-  <main class="wrap">
+  <main id="top">
+    <!-- Hero -->
     <section class="hero">
-      <div class="pill" data-i="heroPill">مجاني 100% • يعمل أوفلاين بدون إنترنت • بدون إعلانات</div>
-      <h1 data-i="heroTitle">اكشف التزييف العميق في الصوت والصور والأخبار من هاتفك فوراً</h1>
-      <p class="hero-desc" data-i="heroDesc">
-        تطبيق أندرويد أصيل يحمي خصوصيتك ويفحص الرسائل الصوتية في واتساب وتيليغرام، ويلتقط منشورات فيسبوك وتيك توك عبر أيقونة عائمة ذكية بضغطة زر — مع دعم كامل للعربية والإنكليزية والكردية السورانية.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="./downloads/fake-away-v1.0.0.apk" download="FakeAway-v1.0.0.apk" data-i="btnDownloadMain">
-          تحميل التطبيق مجاناً (APK)
-        </a>
-        <a class="btn btn-secondary" href="#video" data-i="btnWatchVideo">
-          شاهد الشرح بالفيديو
-        </a>
-      </div>
-      <div class="trust-strip">
-        <span data-i="metaVersion">الإصدار 1.0.0</span>
-        <span>•</span>
-        <span data-i="metaSize">76.1 MB</span>
-        <span>•</span>
-        <span data-i="metaAndroid">أندرويد 8.0 فأحدث</span>
-        <span>•</span>
-        <span data-i="metaLangs">عربي • إنكليزي • كوردی</span>
-      </div>
-    </section>
-
-    <section id="video">
-      <h2 class="sec-title" data-i="videoTitle">الدليل الشامل بالفيديو</h2>
-      <p class="sec-sub" data-i="videoSub">شاهد كيف يعمل تطبيق Fake Away عملياً في كشف فبركة الصوت والصور والأخبار بدون إنترنت</p>
-      <div class="video-card">
-        <div class="video-frame">
-          <iframe
-            src="https://www.youtube.com/embed/kvvE0NSGDGw"
-            title="Fake Away Deepfake Detection Guide"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="video-caption">
-          <span data-i="videoCaption">كيف تكشف التزييف العميق بدون إنترنت؟ 🛡️ | الدليل الشامل لتطبيق Fake Away</span>
-          <a href="https://www.youtube.com/watch?v=kvvE0NSGDGw" target="_blank" rel="noopener noreferrer" data-i="videoLink">فتح في يوتيوب ↗</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="features">
-      <h2 class="sec-title" data-i="featTitle">تقنيات الذكاء الاصطناعي والفحص الجنائي</h2>
-      <p class="sec-sub" data-i="featSub">مصمم ليعمل بكفاءة عالية على الهاتف دون رفع ملفاتك الحساسة إلى السحابة</p>
-      <div class="grid-3">
-        <article class="card">
-          <div class="card-icon">🎙️</div>
-          <h3 data-i="f1Title">محقق الصوت الذكي</h3>
-          <ul>
-            <li data-i="f1b1">تحليل طيفي وفيزيائي (FFT) لـ 5 بصمات صوتية تكشف استنساخ الصوت.</li>
-            <li data-i="f1b2">دعم نموذج Wav2Vec2 ONNX محلياً على الهاتف.</li>
-            <li data-i="f1b3">خريطة زمنية تلوّن الثواني المزيفة بالأحمر والطبيعية بالأخضر.</li>
-            <li data-i="f1b4">استقبال مباشر عبر زر مشاركة (Share) من واتساب وتيليغرام.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-icon">🛡️</div>
-          <h3 data-i="f2Title">الأيقونة العائمة فوق التطبيقات</h3>
-          <ul>
-            <li data-i="f2b1">تعمل فوق فيسبوك وتيك توك وواتساب لتحليل الشاشة بضغطة واحدة.</li>
-            <li data-i="f2b2">استخراج النص العربي والكردي والإنكليزي أوفلاين (Tesseract OCR).</li>
-            <li data-i="f2b3">فحص تلاعب الصور بـ 2D FFT وخريطة حرارية 8×8 ونموذج SMOGY ONNX.</li>
-            <li data-i="f2b4">التقاط الصوت الجاري تشغيله في الريلز والفيديوهات مباشرة.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-icon">📰</div>
-          <h3 data-i="f3Title">التحقق الهجين من الأخبار</h3>
-          <ul>
-            <li data-i="f3b1">كشف فوري للغة التضليل والإثارة والصياغة الآلية أوفلاين.</li>
-            <li data-i="f3b2">دعم أصيل لثلاث لغات: العربية، الكردية السورانية، والإنكليزية.</li>
-            <li data-i="f3b3">مطابقة حية مع مصادر الأخبار وويكيبيديا وغرفة تدقيق تثبّت.</li>
-            <li data-i="f3b4">سجل فحوصات محلي محفوظ على جهازك فقط.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="screenshots">
-      <h2 class="sec-title" data-i="shotsTitle">لقطات حقيقية من واجهة التطبيق</h2>
-      <p class="sec-sub" data-i="shotsSub">اضغط على أي صورة لتكبيرها ومعاينة التفاصيل</p>
-      <div class="swipe-hint" data-i="swipeHint">← اسحب أفقياً لاستعراض الشاشات →</div>
-      <div class="shots-grid">
-        <figure class="shot" onclick="openShot(0)">
-          <div class="shot-bezel"><img src="./screenshots/screen-1-voice.jpg" alt="Voice AI Detective" loading="lazy"></div>
-          <figcaption data-i="shot1">محقق الصوت الذكي أوفلاين</figcaption>
-        </figure>
-        <figure class="shot" onclick="openShot(1)">
-          <div class="shot-bezel"><img src="./screenshots/screen-2-shield.jpg" alt="Floating Shield Setup" loading="lazy"></div>
-          <figcaption data-i="shot2">تشغيل الأيقونة العائمة</figcaption>
-        </figure>
-        <figure class="shot" onclick="openShot(2)">
-          <div class="shot-bezel"><img src="./screenshots/screen-3-floating.jpg" alt="Floating Shield Bubble" loading="lazy"></div>
-          <figcaption data-i="shot3">الأيقونة العائمة فوق الشاشة</figcaption>
-        </figure>
-        <figure class="shot" onclick="openShot(3)">
-          <div class="shot-bezel"><img src="./screenshots/screen-4-verify-input.jpg" alt="Fact-Check Input" loading="lazy"></div>
-          <figcaption data-i="shot4">التحقق الهجين ثلاثي اللغات</figcaption>
-        </figure>
-        <figure class="shot" onclick="openShot(4)">
-          <div class="shot-bezel"><img src="./screenshots/screen-5-verify-result.jpg" alt="Fact-Check Verdict" loading="lazy"></div>
-          <figcaption data-i="shot5">تقرير الفحص الجنائي ونسبة الخطر</figcaption>
-        </figure>
-        <figure class="shot" onclick="openShot(5)">
-          <div class="shot-bezel"><img src="./screenshots/screen-6-settings.jpg" alt="Settings and ONNX Models" loading="lazy"></div>
-          <figcaption data-i="shot6">تبديل اللغات ونماذج ONNX</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="download">
-      <div class="download-box">
-        <div class="pill" data-i="dlPill">تحميل مباشر ومجاني بالكامل</div>
-        <h2 style="color:#fff;font-size:clamp(22px,4vw,28px);" data-i="dlTitle">ثبّت Fake Away على هاتفك الآن</h2>
-        <p style="max-width:600px;margin:0 auto 18px;" data-i="dlSub">
-          ملف APK رسمي وموقّع لنظام أندرويد (8.0 فما فوق) — يعمل مباشرة أوفلاين بعد التثبيت.
-        </p>
-        <a class="btn btn-primary" href="./downloads/fake-away-v1.0.0.apk" download="FakeAway-v1.0.0.apk" data-i="dlBtn">
-          تنزيل FakeAway-v1.0.0.apk (76.1 MB)
-        </a>
-        <div class="steps">
-          <div class="step">
-            <strong data-i="s1Title">1. حمّل ملف APK</strong>
-            <span data-i="s1Desc">اضغط زر التنزيل أعلاه لحفظ ملف التثبيت على هاتفك الأندرويد.</span>
+      <div class="container hero-grid">
+        <div>
+          <div class="pill-row">
+            <span class="pill pill-emerald" data-i="hero_pill_1">يعمل 100% بدون إنترنت</span>
+            <span class="pill pill-amber" data-i="hero_pill_2">الإصدار المحدّث • ARM64</span>
+            <span class="pill" data-i="hero_pill_3">عربي • English • کوردی</span>
           </div>
-          <div class="step">
-            <strong data-i="s2Title">2. اسمح بالتثبيت</strong>
-            <span data-i="s2Desc">فعّل خيار «التثبيت من مصادر غير معروفة» عند الطلب الأول من النظام.</span>
-          </div>
-          <div class="step">
-            <strong data-i="s3Title">3. ابدأ الفحص فوراً</strong>
-            <span data-i="s3Desc">فعّل الأيقونة العائمة فوق فيسبوك أو شارك أي رسالة صوتية من واتساب للتطبيق.</span>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="team">
-      <div class="team-card">
-        <div class="pill" style="background:rgba(56,189,248,0.12);border-color:rgba(56,189,248,0.35);color:var(--cyan);">
-          Blue Team • Created in Mosul Space
-        </div>
-        <h2 style="color:#fff;margin-bottom:6px;" data-i="teamTitle">عن الفريق البرمجي</h2>
-        <p>
-          <span data-i="teamIntro">تم تطوير هذا المشروع بواسطة فريق Blue Team في حاضنة الابتكار والتكنولوجيا:</span>
-          <a href="https://mosulspace.org/" target="_blank" rel="noopener noreferrer" style="font-weight:700;">
-            Mosul Space – Innovation Hub that promote Business and Technology ↗
-          </a>
-        </p>
-        <div class="team-grid">
-          <div class="card" style="background:var(--surf2);border-color:rgba(0,229,160,0.35);">
-            <h3 style="color:var(--real);">عدنان سلطان حسن</h3>
-            <p style="margin-bottom:12px;">
-              <span data-i="leadRole">لطلب التصميم والبرامج</span> — <b>07740851231</b>
-            </p>
-            <div style="display:flex;gap:10px;flex-wrap:wrap;">
-              <a class="wa-btn" href="https://wa.me/9647740851231" target="_blank" rel="noopener noreferrer" data-i="waBtn">تواصل عبر واتساب</a>
-              <a class="btn btn-secondary" style="min-height:38px;padding:7px 14px;font-size:13px;" href="tel:07740851231" data-i="callBtn">اتصال مباشر</a>
+          <h1>
+            <span data-i="hero_title_1">Fake Away —</span>
+            <span class="accent" data-i="hero_title_2">تحقق قبل أن تصدّق</span>
+          </h1>
+          <p class="hero-lead" data-i="hero_lead">
+            منصة فحص ذكية متكاملة على هاتفك لكشف التزييف العميق في الرسائل الصوتية والصور والشاشات والأخبار، مع مختبر الشائعات، الدرع العائم فوق التطبيقات، وخادم غرفة أخبار تثبّت — مجاناً بالكامل وبخصوصية تامة.
+          </p>
+
+          <div class="privacy-banner">
+            <span>🛡️</span>
+            <span data-i="hero_privacy">فحص الصوت والصور يجري بالكامل على هاتفك دون رفع ملفاتك أو محادثاتك لأي خادم.</span>
+          </div>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="./downloads/FakeAway-arm64.apk" download>
+              <span>⬇️</span>
+              <span data-i="hero_dl_btn">تحميل التطبيق مجاناً (APK)</span>
+            </a>
+            <a class="btn btn-outline" href="#video">
+              <span>▶</span>
+              <span data-i="hero_vid_btn">شاهد الدليل العملي</span>
+            </a>
+            <a class="btn btn-outline" href="#screenshots" data-i="hero_screens_btn">استعرض 9 واجهات</a>
+          </div>
+
+          <div class="apk-meta">
+            <div class="meta-box">
+              <div class="meta-label" data-i="meta_file_lbl">ملف التثبيت المباشر</div>
+              <div class="meta-val">FakeAway-arm64.apk</div>
+            </div>
+            <div class="meta-box">
+              <div class="meta-label" data-i="meta_size_lbl">الحجم الكلي</div>
+              <div class="meta-val">70.97 MB</div>
+            </div>
+            <div class="meta-box">
+              <div class="meta-label" data-i="meta_price_lbl">التكلفة</div>
+              <div class="meta-val" style="color:var(--emerald)" data-i="meta_price_val">مجاني 100%</div>
             </div>
           </div>
-          <div>
-            <div class="member-chip"><span>ايه اياد ثامر</span><span style="color:var(--cyan);font-size:12px;">Blue Team</span></div>
-            <div class="member-chip"><span>سدرة احمد محمد شيت</span><span style="color:var(--cyan);font-size:12px;">Blue Team</span></div>
-            <div class="member-chip"><span>خالد محمد علي</span><span style="color:var(--cyan);font-size:12px;">Blue Team</span></div>
+        </div>
+
+        <div class="hero-showcase">
+          <div class="phone-float-card phone-float-top">
+            <div class="float-title" style="color:var(--emerald)">⚡ <span data-i="float_1_t">الدرع العائم</span></div>
+            <div class="float-sub" data-i="float_1_s">فحص مباشر فوق واتساب وفيسبوك وتيك توك</div>
+          </div>
+
+          <div class="phone-frame">
+            <img src="./screenshots/screen-1-home.jpg" alt="Fake Away Home Interface" />
+          </div>
+
+          <div class="phone-float-card phone-float-bottom">
+            <div class="float-title" style="color:var(--amber)">🧪 <span data-i="float_2_t">مختبر الشائعات</span></div>
+            <div class="float-sub" data-i="float_2_s">تقدير نسبة الخطر وتوقع الانتشار خلال 48 ساعة</div>
           </div>
         </div>
       </div>
     </section>
 
-    <footer>
-      <span data-i="footerText">Fake Away • تطبيق مجاني لكشف التزييف العميق أوفلاين • Blue Team in</span>
-      <a href="https://mosulspace.org/" target="_blank" rel="noopener noreferrer">Mosul Space</a>
-    </footer>
+    <!-- Core & New Capabilities -->
+    <section id="features">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker" data-i="feat_kicker">قدرات الإصدار الجديد</span>
+          <h2 class="section-title" data-i="feat_title">واجهة موحّدة أسرع، وفحص ذكي في 5 تبويبات</h2>
+          <p class="section-desc" data-i="feat_desc">
+            تمت إعادة تصميم التطبيق بالكامل لتسهيل الوصول السريع من الشاشة الرئيسية إلى فحص الصوت والصور والأخبار، مع أدوات توعية وتحليل انتشار الشائعات.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-icon icon-emerald">🏠</div>
+            <h3 data-i="f1_t">الرئيسية: ماذا تريد أن تفحص؟</h3>
+            <p data-i="f1_d">وصول بضغطة واحدة إلى فحص رسالة صوتية، صورة أو شاشة، أو خبر وادعاء، مع عرض آخر الفحوصات وبانر الخصوصية المحلية.</p>
+            <div class="tag-list">
+              <span class="mini-tag" data-i="f1_tag1">رسالة صوتية</span>
+              <span class="mini-tag" data-i="f1_tag2">صورة أو شاشة</span>
+              <span class="mini-tag" data-i="f1_tag3">خبر أو ادعاء</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon icon-sky">🎙️</div>
+            <h3 data-i="f2_t">فحص الصوت والتسجيل المباشر</h3>
+            <p data-i="f2_d">سجّل مباشرة أو اختر ملف صوت/فيديو، أو شارك أي رسالة صوتية من واتساب وتيليغرام إلى Fake Away، مع أمثلة جاهزة لاختبار الصوت الطبيعي والاصطناعي.</p>
+            <div class="tag-list">
+              <span class="mini-tag" data-i="f2_tag1">تسجيل مباشر</span>
+              <span class="mini-tag" data-i="f2_tag2">مشاركة واتساب وتيليغرام</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon icon-amber">🛡️</div>
+            <h3 data-i="f3_t">الدرع العائم والتحقق الهجين</h3>
+            <p data-i="f3_d">تنقّل سلس بين الصوت والدرع العائم والتحقق داخل تبويب "افحص" لفحص الشاشة فوق التطبيقات والتحقق اللغوي من الأخبار.</p>
+            <div class="tag-list">
+              <span class="mini-tag" data-i="f3_tag1">أيقونة عائمة</span>
+              <span class="mini-tag" data-i="f3_tag2">OCR مدمج</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon icon-crimson">🧪</div>
+            <h3 data-i="f4_t">مختبر الشائعات واختبر نفسك</h3>
+            <p data-i="f4_d">تبويب "اكتشف" الجديد يقيس خطورة صياغة الخبر، ويحسب توقع الانتشار خلال 3 ساعات و24 ساعة و48 ساعة، مع اختبارات تفاعلية لتدريب المستخدم.</p>
+            <div class="tag-list">
+              <span class="mini-tag" data-i="f4_tag1">مختبر الشائعات</span>
+              <span class="mini-tag" data-i="f4_tag2">اختبر نفسك</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon icon-emerald">🕘</div>
+            <h3 data-i="f5_t">سجل فحوصات مصنّف</h3>
+            <p data-i="f5_d">حفظ تلقائي لنتائج الفحص على الجهاز مع فلاتر سريعة (الكل، الصوت، الشاشة والصور، الأخبار) وعرض نسب الثقة والخطر.</p>
+            <div class="tag-list">
+              <span class="mini-tag" data-i="f5_tag1">فلاتر ذكية</span>
+              <span class="mini-tag" data-i="f5_tag2">Overlay Mic</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-icon icon-sky">🛰️</div>
+            <h3 data-i="f6_t">الوضع الأوفلاين الصارم وخادم تثبّت</h3>
+            <p data-i="f6_d">قفل كامل على الشبكة عند الحاجة لتشغيل النماذج المحلية فقط، مع دعم اختياري للربط مع خادم غرفة أخبار تثبّت (Tathabbat).</p>
+            <div class="tag-list">
+              <span class="mini-tag" data-i="f6_tag1">بدون إنترنت</span>
+              <span class="mini-tag">Tathabbat</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rumor Lab Spotlight -->
+    <section id="rumor-lab">
+      <div class="container">
+        <div class="split-panel">
+          <div>
+            <span class="section-kicker" data-i="lab_kicker">جديد في تبويب اكتشف</span>
+            <h2 class="section-title" style="margin-top:6px" data-i="lab_title">مختبر الشائعات: توقّع الانتشار قبل انفجار الإشاعة</h2>
+            <p class="section-desc" style="margin-top:10px" data-i="lab_desc">
+              لا يكتفي Fake Away بإعطاء نسبة خطر للخبر، بل يحلل ما تُظهره الصياغة اللغوية ويحسب التوقعات الرقمية للوصول خلال 24 ساعة ومنحنى الانتشار المتوقع خلال 48 ساعة.
+            </p>
+
+            <div class="metric-strip">
+              <div class="metric-pill">
+                <strong style="color:var(--emerald)">23%</strong>
+                <span data-i="lab_m1">قياس نسبة الخطر والانتشار</span>
+              </div>
+              <div class="metric-pill">
+                <strong style="color:var(--amber)">24h / 48h</strong>
+                <span data-i="lab_m2">توقعات الوصول ومنحنى الانتشار</span>
+              </div>
+              <div class="metric-pill">
+                <strong style="color:var(--sky)">OCR + NLP</strong>
+                <span data-i="lab_m3">تحليل الصياغة عربي/إنكليزي/كردي</span>
+              </div>
+            </div>
+
+            <a class="btn btn-emerald" href="./downloads/FakeAway-arm64.apk" download data-i="lab_cta">جرّب مختبر الشائعات على هاتفك</a>
+          </div>
+
+          <div style="display:flex;justify-content:center">
+            <img src="./screenshots/screen-3-discover.jpg" alt="Rumor Lab Screenshot" style="max-height:500px;border-radius:24px;border:1px solid var(--border-strong);box-shadow:var(--shadow-lg)" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Local AI Models -->
+    <section id="models">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker" data-i="mod_kicker">الذكاء الاصطناعي المحلي</span>
+          <h2 class="section-title" data-i="mod_title">حزم مدمجة للعمل بدون إنترنت على جهازك</h2>
+        </div>
+        <div class="models-grid">
+          <div class="model-row">
+            <div>
+              <h3 style="margin:0 0 4px" data-i="mod_1_t">نموذج أصالة الصوت</h3>
+              <p style="margin:0;color:var(--text-muted);font-size:0.9rem" data-i="mod_1_d">فحص البصمة الطيفية وكشف الأصوات المستنسخة أو المولّدة بالذكاء الاصطناعي محلياً (63.4 MB).</p>
+            </div>
+            <span class="model-badge" data-i="mod_installed">مثبّت • 63.4 MB</span>
+          </div>
+          <div class="model-row">
+            <div>
+              <h3 style="margin:0 0 4px" data-i="mod_2_t">نموذج أصالة الصورة</h3>
+              <p style="margin:0;color:var(--text-muted);font-size:0.9rem" data-i="mod_2_d">كشف التلاعب البصري والصور المولّدة بالذكاء الاصطناعي من المعرض أو لقطات الشاشة (50.1 MB).</p>
+            </div>
+            <span class="model-badge" data-i="mod_installed_img">مثبّت • 50.1 MB</span>
+          </div>
+          <div class="model-row">
+            <div>
+              <h3 style="margin:0 0 4px" data-i="mod_3_t">محرك OCR المدمج (عربي + كردي + إنكليزي)</h3>
+              <p style="margin:0;color:var(--text-muted);font-size:0.9rem" data-i="mod_3_d">استخراج النصوص من الصور ولقطات الشاشة بالكامل أوفلاين (Arabic.traineddata + eng.traineddata).</p>
+            </div>
+            <span class="model-badge" data-i="mod_offline">مدمج أوفلاين</span>
+          </div>
+          <div class="model-row">
+            <div>
+              <h3 style="margin:0 0 4px" data-i="mod_4_t">خادم غرفة أخبار تثبّت (Tathabbat)</h3>
+              <p style="margin:0;color:var(--text-muted);font-size:0.9rem" data-i="mod_4_d">تكامل مباشر للتحقق الهجين مع مصادر الأخبار عند توفر اتصال اختياري بالإنترنت.</p>
+            </div>
+            <span class="model-badge" data-i="mod_hybrid">تكامل هجين</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video -->
+    <section id="video">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker" data-i="vid_kicker">الشرح المرئي</span>
+          <h2 class="section-title" data-i="vid_title">كيف تكشف التزييف العميق بدون إنترنت؟</h2>
+          <p class="section-desc" data-i="vid_desc">الدليل الشامل لتطبيق Fake Away وكشف فبركة الصوت والصور والأخبار.</p>
+        </div>
+        <div class="video-wrap">
+          <div class="video-aspect">
+            <iframe
+              src="https://www.youtube.com/embed/kvvE0NSGDGw"
+              title="Fake Away Demo Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:14px">
+            <span style="color:var(--text-muted);font-size:0.9rem" data-i="vid_note">شاهد العرض التطبيقي الكامل على YouTube أو حمّل التطبيق وجرّبه بنفسك.</span>
+            <a class="btn btn-outline btn-sm" href="https://www.youtube.com/watch?v=kvvE0NSGDGw" target="_blank" rel="noopener" data-i="vid_yt_btn">فتح في YouTube ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots Gallery -->
+    <section id="screenshots">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker" data-i="scr_kicker">واجهات الإصدار الجديد</span>
+          <h2 class="section-title" data-i="scr_title">جولة داخل جميع شاشات Fake Away (9 صور)</h2>
+          <p class="section-desc" data-i="scr_desc">اضغط على أي شاشة لتكبيرها واستعراض التفاصيل.</p>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <div class="shot-card" data-idx="0">
+            <div class="shot-thumb"><img src="./screenshots/screen-1-home.jpg" alt="Home Screen" loading="lazy" /></div>
+            <div class="shot-body">
+              <h3 class="shot-title" data-i="s1_t">1. الشاشة الرئيسية</h3>
+              <p class="shot-caption" data-i="s1_d">اختصارات الفحص السريع للصوت والصور والأخبار مع تنبيه الخصوصية.</p>
+            </div>
+          </div>
+
+          <div class="shot-card" data-idx="1">
+            <div class="shot-thumb"><img src="./screenshots/screen-2-scan.jpg" alt="Scan Voice Screen" loading="lazy" /></div>
+            <div class="shot-body">
+              <h3 class="shot-title" data-i="s2_t">2. تبويب افحص (الصوت)</h3>
+              <p class="shot-caption" data-i="s2_d">تسجيل مباشر، اختيار ملف صوت/فيديو، وأزرار اختبار الصوت الاصطناعي والطبيعي.</p>
+            </div>
+          </div>
+
+          <div class="shot-card" data-idx="2">
+            <div class="shot-thumb"><img src="./screenshots/screen-3-discover.jpg" alt="Discover Rumor Lab" loading="lazy" /></div>
+            <div class="shot-body">
+              <h3 class="shot-title" data-i="s3_t">3. تبويب اكتشف (مختبر الشائعات)</h3>
+              <p class="shot-caption" data-i="s3_d">قياس الخطر، توقع الوصول خلال 24 ساعة، ومنحنى الانتشار لـ 48 ساعة.</p>
+            </div>
+          </div>
+
+          <div class="shot-card" data-idx="3">
+            <div class="shot-thumb"><img src="./screenshots/screen-5-history.jpg" alt="History Screen" loading="lazy" /></div>
+            <div class="shot-body">
+              <h3 class="shot-title" data-i="s4_t">4. سجل الفحوصات</h3>
+              <p class="shot-caption" data-i="s4_d">فلاتر الصوت والشاشة والأخبار مع نتائج الفحص السابقة ونسبها.</p>
+            </div>
+          </div>
+
+          <div class="shot-card" data-idx="4">
+            <div class="shot-thumb"><img src="./screenshots/screen-6-settings.jpg" alt="Settings Language and Offline" loading="lazy" /></div>
+            <div class="shot-body">
+              <h3 class="shot-title" data-i="s5_t">5. الإعدادات والوضع الأوفلاين</h3>
+              <p class="shot-caption" data-i="s5_d">تبديل فوري بين العربية والإنكليزية والكردية وتفعيل الوضع الأوفلاين الصارم.</p>
+            </div>
+          </div>
+
+          <div class="shot-card" data-idx="5">
+            <div class="shot-thumb"><img src="./screenshots/screen-7-models.jpg" alt="Local AI Models and Tathabbat" loading="lazy" /></div>
+            <div class="shot-body">
+              <h3 class="shot-title" data-i="s6_t">6. النماذج المحلية وخادم تثبّت</h3>
+              <p class="shot-caption" data-i="s6_d">إدارة نموذج الصوت (63.4 MB) والصورة (50.1 MB) وخادم غرفة أخبار تثبّت.</p>
+            </div>
+          </div>
+
+          <div class="shot-card" data-idx="6">
+            <div class="shot-thumb"><img src="./screenshots/screen-8-about-top.jpg" alt="About Mosul Space" loading="lazy" /></div>
+            <div class="shot-body">
+              <h3 class="shot-title" data-i="s7_t">7. شاشة الفريق البرمجي</h3>
+              <p class="shot-caption" data-i="s7_d">Blue Team في Mosul Space مع رابط الحاضنة التكنولوجية.</p>
+            </div>
+          </div>
+
+          <div class="shot-card" data-idx="7">
+            <div class="shot-thumb"><img src="./screenshots/screen-9-about-team.jpg" alt="Blue Team Members" loading="lazy" /></div>
+            <div class="shot-body">
+              <h3 class="shot-title" data-i="s8_t">8. أعضاء الفريق والتواصل</h3>
+              <p class="shot-caption" data-i="s8_d">معلومات المطورين وروابط التواصل المباشر عبر واتساب وإنستغرام.</p>
+            </div>
+          </div>
+
+          <div class="shot-card" data-idx="8">
+            <div class="shot-thumb"><img src="./screenshots/screen-4-icon.jpg" alt="New App Icon" loading="lazy" /></div>
+            <div class="shot-body">
+              <h3 class="shot-title" data-i="s9_t">9. الهوية البصرية الجديدة</h3>
+              <p class="shot-caption" data-i="s9_d">شعار Fake Away الجديد الذي يدمج الدرع مع الموجة الصوتية ومصفوفة البكسل.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team & Mosul Space -->
+    <section id="team">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker" data-i="team_kicker">الفريق البرمجي</span>
+          <h2 class="section-title" data-i="team_title">Blue Team • أُنشئ في Mosul Space</h2>
+        </div>
+
+        <div class="team-banner">
+          <div>
+            <h3 style="margin:0 0 4px;font-size:1.2rem;font-weight:900">Blue Team • Mosul Space</h3>
+            <p style="margin:0;color:var(--text-muted)" data-i="mosul_desc">
+              Mosul Space – Innovation Hub that promote Business and Technology
+            </p>
+          </div>
+          <a class="btn btn-primary btn-sm" href="https://mosulspace.org/" target="_blank" rel="noopener" data-i="mosul_btn">زيارة Mosul Space ↗</a>
+        </div>
+
+        <div class="team-grid">
+          <div class="member-card">
+            <div class="member-head">
+              <h3 class="member-name" data-i="m1_name">عدنان سلطان حسن</h3>
+              <span class="mini-tag" data-i="m1_badge">لطلب التصميم والبرامج</span>
+            </div>
+            <div class="member-role" data-i="m1_role">تواصل مباشر لطلب التصميم وتطوير البرمجيات — 07740851231</div>
+            <div class="contact-row">
+              <a class="btn btn-emerald btn-sm" href="https://wa.me/9647740851231" target="_blank" rel="noopener" data-i="m1_wa">واتساب 07740851231</a>
+              <a class="btn btn-outline btn-sm" href="tel:07740851231" data-i="m1_call">اتصال</a>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-head">
+              <h3 class="member-name" data-i="m4_name">خالد محمد أحمد</h3>
+              <span class="mini-tag">Blue Team</span>
+            </div>
+            <div class="member-role" data-i="m4_role">إنستغرام: KA_XF</div>
+            <div class="contact-row">
+              <a class="btn btn-outline btn-sm" href="https://instagram.com/ka_xf" target="_blank" rel="noopener" data-i="m4_ig">إنستغرام KA_XF ↗</a>
+            </div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-head">
+              <h3 class="member-name" data-i="m2_name">ايه اياد ثامر</h3>
+              <span class="mini-tag">Blue Team</span>
+            </div>
+            <div class="member-role" data-i="m_member_role">عضو الفريق البرمجي • Mosul Space</div>
+          </div>
+
+          <div class="member-card">
+            <div class="member-head">
+              <h3 class="member-name" data-i="m3_name">سدرة احمد محمد شيت</h3>
+              <span class="mini-tag">Blue Team</span>
+            </div>
+            <div class="member-role" data-i="m_member_role">عضو الفريق البرمجي • Mosul Space</div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <div class="mobile-sticky-cta">
-    <div>
-      <strong style="display:block;font-size:14px;color:#fff;">Fake Away v1.0.0</strong>
-      <small style="color:var(--real);font-size:12px;" data-i="stickySub">مجاني • 76.1 MB</small>
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Fake Away — <span data-i="footer_txt">تطبيق مجاني بالكامل • تطوير Blue Team في Mosul Space</span></div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="./downloads/FakeAway-arm64.apk" download data-i="footer_dl">تحميل APK</a>
+        <a href="https://mosulspace.org/" target="_blank" rel="noopener">Mosul Space</a>
+        <a href="https://www.youtube.com/watch?v=kvvE0NSGDGw" target="_blank" rel="noopener">YouTube</a>
+      </div>
     </div>
-    <a class="btn btn-primary" style="min-height:42px;padding:8px 16px;font-size:14px;" href="./downloads/fake-away-v1.0.0.apk" download="FakeAway-v1.0.0.apk" data-i="stickyBtn">
-      تحميل مجاني
-    </a>
-  </div>
+  </footer>
 
-  <div id="lightbox" class="lightbox" onclick="closeShot(event)">
-    <button class="lb-btn lb-close" onclick="forceCloseShot()" aria-label="Close">×</button>
-    <button class="lb-btn" onclick="stepShot(-1, event)" aria-label="Previous">‹</button>
-    <img id="lightboxImg" src="" alt="">
-    <button class="lb-btn" onclick="stepShot(1, event)" aria-label="Next">›</button>
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <img id="lbImg" src="" alt="Preview" />
+      <h3 id="lbTitle" style="margin:0 0 4px;font-size:1.05rem"></h3>
+      <p id="lbCap" style="margin:0;color:var(--text-muted);font-size:0.88rem"></p>
+      <div class="lightbox-controls">
+        <button class="lb-btn" id="lbPrev" data-i="lb_prev">السابق</button>
+        <button class="lb-btn" id="lbClose" data-i="lb_close">إغلاق</button>
+        <button class="lb-btn" id="lbNext" data-i="lb_next">التالي</button>
+      </div>
+    </div>
   </div>
 
   <script>
-    const SHOTS = [
-      './screenshots/screen-1-voice.jpg',
-      './screenshots/screen-2-shield.jpg',
-      './screenshots/screen-3-floating.jpg',
-      './screenshots/screen-4-verify-input.jpg',
-      './screenshots/screen-5-verify-result.jpg',
-      './screenshots/screen-6-settings.jpg'
-    ];
-    let currentShot = 0;
-
-    function openShot(idx) {
-      currentShot = idx;
-      document.getElementById('lightboxImg').src = SHOTS[idx];
-      document.getElementById('lightbox').classList.add('open');
-    }
-    function stepShot(delta, ev) {
-      ev.stopPropagation();
-      currentShot = (currentShot + delta + SHOTS.length) % SHOTS.length;
-      document.getElementById('lightboxImg').src = SHOTS[currentShot];
-    }
-    function forceCloseShot() {
-      document.getElementById('lightbox').classList.remove('open');
-    }
-    function closeShot(ev) {
-      if (ev.target.id === 'lightbox') forceCloseShot();
-    }
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') forceCloseShot();
-    });
-
     const I18N = {
       ar: {
-        dir: 'rtl',
-        title: 'Fake Away — كشف التزييف العميق أوفلاين | تحميل مجاني للأندرويد',
-        brandSub: 'درع كشف التزييف العميق أوفلاين',
-        navVideo: 'الفيديو', navFeatures: 'التقنيات', navShots: 'الصور', navDownload: 'التحميل', navTeam: 'الفريق',
-        heroPill: 'مجاني 100% • يعمل أوفلاين بدون إنترنت • بدون إعلانات',
-        heroTitle: 'اكشف التزييف العميق في الصوت والصور والأخبار من هاتفك فوراً',
-        heroDesc: 'تطبيق أندرويد أصيل يحمي خصوصيتك ويفحص الرسائل الصوتية في واتساب وتيليغرام، ويلتقط منشورات فيسبوك وتيك توك عبر أيقونة عائمة ذكية بضغطة زر — مع دعم كامل للعربية والإنكليزية والكردية السورانية.',
-        btnDownloadMain: 'تحميل التطبيق مجاناً (APK)', btnWatchVideo: 'شاهد الشرح بالفيديو',
-        metaVersion: 'الإصدار 1.0.0', metaSize: '76.1 MB', metaAndroid: 'أندرويد 8.0 فأحدث', metaLangs: 'عربي • إنكليزي • كوردی',
-        videoTitle: 'الدليل الشامل بالفيديو',
-        videoSub: 'شاهد كيف يعمل تطبيق Fake Away عملياً في كشف فبركة الصوت والصور والأخبار بدون إنترنت',
-        videoCaption: 'كيف تكشف التزييف العميق بدون إنترنت؟ 🛡️ | الدليل الشامل لتطبيق Fake Away',
-        videoLink: 'فتح في يوتيوب ↗',
-        featTitle: 'تقنيات الذكاء الاصطناعي والفحص الجنائي',
-        featSub: 'مصمم ليعمل بكفاءة عالية على الهاتف دون رفع ملفاتك الحساسة إلى السحابة',
-        f1Title: 'محقق الصوت الذكي',
-        f1b1: 'تحليل طيفي وفيزيائي (FFT) لـ 5 بصمات صوتية تكشف استنساخ الصوت.',
-        f1b2: 'دعم نموذج Wav2Vec2 ONNX محلياً على الهاتف.',
-        f1b3: 'خريطة زمنية تلوّن الثواني المزيفة بالأحمر والطبيعية بالأخضر.',
-        f1b4: 'استقبال مباشر عبر زر مشاركة (Share) من واتساب وتيليغرام.',
-        f2Title: 'الأيقونة العائمة فوق التطبيقات',
-        f2b1: 'تعمل فوق فيسبوك وتيك توك وواتساب لتحليل الشاشة بضغطة واحدة.',
-        f2b2: 'استخراج النص العربي والكردي والإنكليزي أوفلاين (Tesseract OCR).',
-        f2b3: 'فحص تلاعب الصور بـ 2D FFT وخريطة حرارية 8×8 ونموذج SMOGY ONNX.',
-        f2b4: 'التقاط الصوت الجاري تشغيله في الريلز والفيديوهات مباشرة.',
-        f3Title: 'التحقق الهجين من الأخبار',
-        f3b1: 'كشف فوري للغة التضليل والإثارة والصياغة الآلية أوفلاين.',
-        f3b2: 'دعم أصيل لثلاث لغات: العربية، الكردية السورانية، والإنكليزية.',
-        f3b3: 'مطابقة حية مع مصادر الأخبار وويكيبيديا وغرفة تدقيق تثبّت.',
-        f3b4: 'سجل فحوصات محلي محفوظ على جهازك فقط.',
-        shotsTitle: 'لقطات حقيقية من واجهة التطبيق',
-        shotsSub: 'اضغط على أي صورة لتكبيرها ومعاينة التفاصيل',
-        swipeHint: '← اسحب أفقياً لاستعراض الشاشات →',
-        shot1: 'محقق الصوت الذكي أوفلاين', shot2: 'تشغيل الأيقونة العائمة',
-        shot3: 'الأيقونة العائمة فوق الشاشة', shot4: 'التحقق الهجين ثلاثي اللغات',
-        shot5: 'تقرير الفحص الجنائي ونسبة الخطر', shot6: 'تبديل اللغات ونماذج ONNX',
-        dlPill: 'تحميل مباشر ومجاني بالكامل',
-        dlTitle: 'ثبّت Fake Away على هاتفك الآن',
-        dlSub: 'ملف APK رسمي وموقّع لنظام أندرويد (8.0 فما فوق) — يعمل مباشرة أوفلاين بعد التثبيت.',
-        dlBtn: 'تنزيل FakeAway-v1.0.0.apk (76.1 MB)',
-        s1Title: '1. حمّل ملف APK', s1Desc: 'اضغط زر التنزيل أعلاه لحفظ ملف التثبيت على هاتفك الأندرويد.',
-        s2Title: '2. اسمح بالتثبيت', s2Desc: 'فعّل خيار «التثبيت من مصادر غير معروفة» عند الطلب الأول من النظام.',
-        s3Title: '3. ابدأ الفحص فوراً', s3Desc: 'فعّل الأيقونة العائمة فوق فيسبوك أو شارك أي رسالة صوتية من واتساب للتطبيق.',
-        teamTitle: 'عن الفريق البرمجي',
-        teamIntro: 'تم تطوير هذا المشروع بواسطة فريق Blue Team في حاضنة الابتكار والتكنولوجيا:',
-        leadRole: 'لطلب التصميم والبرامج', waBtn: 'تواصل عبر واتساب', callBtn: 'اتصال مباشر',
-        footerText: 'Fake Away • تطبيق مجاني لكشف التزييف العميق أوفلاين • Blue Team in',
-        stickySub: 'مجاني • 76.1 MB', stickyBtn: 'تحميل مجاني'
+        badge_free: "مجاني 100%",
+        nav_features: "المزايا الجديدة",
+        nav_lab: "مختبر الشائعات",
+        nav_video: "الفيديو",
+        nav_screens: "الواجهات",
+        nav_team: "الفريق",
+        nav_download: "تحميل APK",
+        hero_pill_1: "يعمل 100% بدون إنترنت",
+        hero_pill_2: "الإصدار المحدّث • ARM64",
+        hero_pill_3: "عربي • English • کوردی",
+        hero_title_1: "Fake Away —",
+        hero_title_2: "تحقق قبل أن تصدّق",
+        hero_lead: "منصة فحص ذكية متكاملة على هاتفك لكشف التزييف العميق في الرسائل الصوتية والصور والشاشات والأخبار، مع مختبر الشائعات، الدرع العائم فوق التطبيقات، وخادم غرفة أخبار تثبّت — مجاناً بالكامل وبخصوصية تامة.",
+        hero_privacy: "فحص الصوت والصور يجري بالكامل على هاتفك دون رفع ملفاتك أو محادثاتك لأي خادم.",
+        hero_dl_btn: "تحميل التطبيق مجاناً (APK)",
+        hero_vid_btn: "شاهد الدليل العملي",
+        hero_screens_btn: "استعرض 9 واجهات",
+        meta_file_lbl: "ملف التثبيت المباشر",
+        meta_size_lbl: "الحجم الكلي",
+        meta_price_lbl: "التكلفة",
+        meta_price_val: "مجاني 100%",
+        float_1_t: "الدرع العائم",
+        float_1_s: "فحص مباشر فوق واتساب وفيسبوك وتيك توك",
+        float_2_t: "مختبر الشائعات",
+        float_2_s: "تقدير نسبة الخطر وتوقع الانتشار خلال 48 ساعة",
+        feat_kicker: "قدرات الإصدار الجديد",
+        feat_title: "واجهة موحّدة أسرع، وفحص ذكي في 5 تبويبات",
+        feat_desc: "تمت إعادة تصميم التطبيق بالكامل لتسهيل الوصول السريع من الشاشة الرئيسية إلى فحص الصوت والصور والأخبار، مع أدوات توعية وتحليل انتشار الشائعات.",
+        f1_t: "الرئيسية: ماذا تريد أن تفحص؟",
+        f1_d: "وصول بضغطة واحدة إلى فحص رسالة صوتية، صورة أو شاشة، أو خبر وادعاء، مع عرض آخر الفحوصات وبانر الخصوصية المحلية.",
+        f1_tag1: "رسالة صوتية",
+        f1_tag2: "صورة أو شاشة",
+        f1_tag3: "خبر أو ادعاء",
+        f2_t: "فحص الصوت والتسجيل المباشر",
+        f2_d: "سجّل مباشرة أو اختر ملف صوت/فيديو، أو شارك أي رسالة صوتية من واتساب وتيليغرام إلى Fake Away، مع أمثلة جاهزة لاختبار الصوت الطبيعي والاصطناعي.",
+        f2_tag1: "تسجيل مباشر",
+        f2_tag2: "مشاركة واتساب وتيليغرام",
+        f3_t: "الدرع العائم والتحقق الهجين",
+        f3_d: "تنقّل سلس بين الصوت والدرع العائم والتحقق داخل تبويب \"افحص\" لفحص الشاشة فوق التطبيقات والتحقق اللغوي من الأخبار.",
+        f3_tag1: "أيقونة عائمة",
+        f3_tag2: "OCR مدمج",
+        f4_t: "مختبر الشائعات واختبر نفسك",
+        f4_d: "تبويب \"اكتشف\" الجديد يقيس خطورة صياغة الخبر، ويحسب توقع الانتشار خلال 3 ساعات و24 ساعة و48 ساعة، مع اختبارات تفاعلية لتدريب المستخدم.",
+        f4_tag1: "مختبر الشائعات",
+        f4_tag2: "اختبر نفسك",
+        f5_t: "سجل فحوصات مصنّف",
+        f5_d: "حفظ تلقائي لنتائج الفحص على الجهاز مع فلاتر سريعة (الكل، الصوت، الشاشة والصور، الأخبار) وعرض نسب الثقة والخطر.",
+        f5_tag1: "فلاتر ذكية",
+        f5_tag2: "Overlay Mic",
+        f6_t: "الوضع الأوفلاين الصارم وخادم تثبّت",
+        f6_d: "قفل كامل على الشبكة عند الحاجة لتشغيل النماذج المحلية فقط، مع دعم اختياري للربط مع خادم غرفة أخبار تثبّت (Tathabbat).",
+        f6_tag1: "بدون إنترنت",
+        lab_kicker: "جديد في تبويب اكتشف",
+        lab_title: "مختبر الشائعات: توقّع الانتشار قبل انفجار الإشاعة",
+        lab_desc: "لا يكتفي Fake Away بإعطاء نسبة خطر للخبر، بل يحلل ما تُظهره الصياغة اللغوية ويحسب التوقعات الرقمية للوصول خلال 24 ساعة ومنحنى الانتشار المتوقع خلال 48 ساعة.",
+        lab_m1: "قياس نسبة الخطر والانتشار",
+        lab_m2: "توقعات الوصول ومنحنى الانتشار",
+        lab_m3: "تحليل الصياغة عربي/إنكليزي/كردي",
+        lab_cta: "جرّب مختبر الشائعات على هاتفك",
+        mod_kicker: "الذكاء الاصطناعي المحلي",
+        mod_title: "حزم مدمجة للعمل بدون إنترنت على جهازك",
+        mod_1_t: "نموذج أصالة الصوت",
+        mod_1_d: "فحص البصمة الطيفية وكشف الأصوات المستنسخة أو المولّدة بالذكاء الاصطناعي محلياً (63.4 MB).",
+        mod_installed: "مثبّت • 63.4 MB",
+        mod_2_t: "نموذج أصالة الصورة",
+        mod_2_d: "كشف التلاعب البصري والصور المولّدة بالذكاء الاصطناعي من المعرض أو لقطات الشاشة (50.1 MB).",
+        mod_installed_img: "مثبّت • 50.1 MB",
+        mod_3_t: "محرك OCR المدمج (عربي + كردي + إنكليزي)",
+        mod_3_d: "استخراج النصوص من الصور ولقطات الشاشة بالكامل أوفلاين (Arabic.traineddata + eng.traineddata).",
+        mod_offline: "مدمج أوفلاين",
+        mod_4_t: "خادم غرفة أخبار تثبّت (Tathabbat)",
+        mod_4_d: "تكامل مباشر للتحقق الهجين مع مصادر الأخبار عند توفر اتصال اختياري بالإنترنت.",
+        mod_hybrid: "تكامل هجين",
+        vid_kicker: "الشرح المرئي",
+        vid_title: "كيف تكشف التزييف العميق بدون إنترنت؟",
+        vid_desc: "الدليل الشامل لتطبيق Fake Away وكشف فبركة الصوت والصور والأخبار.",
+        vid_note: "شاهد العرض التطبيقي الكامل على YouTube أو حمّل التطبيق وجرّبه بنفسك.",
+        vid_yt_btn: "فتح في YouTube ↗",
+        scr_kicker: "واجهات الإصدار الجديد",
+        scr_title: "جولة داخل جميع شاشات Fake Away (9 صور)",
+        scr_desc: "اضغط على أي شاشة لتكبيرها واستعراض التفاصيل.",
+        s1_t: "1. الشاشة الرئيسية",
+        s1_d: "اختصارات الفحص السريع للصوت والصور والأخبار مع تنبيه الخصوصية.",
+        s2_t: "2. تبويب افحص (الصوت)",
+        s2_d: "تسجيل مباشر، اختيار ملف صوت/فيديو، وأزرار اختبار الصوت الاصطناعي والطبيعي.",
+        s3_t: "3. تبويب اكتشف (مختبر الشائعات)",
+        s3_d: "قياس الخطر، توقع الوصول خلال 24 ساعة، ومنحنى الانتشار لـ 48 ساعة.",
+        s4_t: "4. سجل الفحوصات",
+        s4_d: "فلاتر الصوت والشاشة والأخبار مع نتائج الفحص السابقة ونسبها.",
+        s5_t: "5. الإعدادات والوضع الأوفلاين",
+        s5_d: "تبديل فوري بين العربية والإنكليزية والكردية وتفعيل الوضع الأوفلاين الصارم.",
+        s6_t: "6. النماذج المحلية وخادم تثبّت",
+        s6_d: "إدارة نموذج الصوت (63.4 MB) والصورة (50.1 MB) وخادم غرفة أخبار تثبّت.",
+        s7_t: "7. شاشة الفريق البرمجي",
+        s7_d: "Blue Team في Mosul Space مع رابط الحاضنة التكنولوجية.",
+        s8_t: "8. أعضاء الفريق والتواصل",
+        s8_d: "معلومات المطورين وروابط التواصل المباشر عبر واتساب وإنستغرام.",
+        s9_t: "9. الهوية البصرية الجديدة",
+        s9_d: "شعار Fake Away الجديد الذي يدمج الدرع مع الموجة الصوتية ومصفوفة البكسل.",
+        team_kicker: "الفريق البرمجي",
+        team_title: "Blue Team • أُنشئ في Mosul Space",
+        mosul_desc: "Mosul Space – Innovation Hub that promote Business and Technology",
+        mosul_btn: "زيارة Mosul Space ↗",
+        m1_name: "عدنان سلطان حسن",
+        m1_badge: "لطلب التصميم والبرامج",
+        m1_role: "تواصل مباشر لطلب التصميم وتطوير البرمجيات — 07740851231",
+        m1_wa: "واتساب 07740851231",
+        m1_call: "اتصال",
+        m4_name: "خالد محمد أحمد",
+        m4_role: "إنستغرام: KA_XF",
+        m4_ig: "إنستغرام KA_XF ↗",
+        m2_name: "ايه اياد ثامر",
+        m3_name: "سدرة احمد محمد شيت",
+        m_member_role: "عضو الفريق البرمجي • Mosul Space",
+        footer_txt: "تطبيق مجاني بالكامل • تطوير Blue Team في Mosul Space",
+        footer_dl: "تحميل APK",
+        lb_prev: "السابق",
+        lb_close: "إغلاق",
+        lb_next: "التالي"
       },
       en: {
-        dir: 'ltr',
-        title: 'Fake Away — Offline Deepfake Detector | Free Android Download',
-        brandSub: 'Offline AI Voice, Screen & Fact Shield',
-        navVideo: 'Video', navFeatures: 'Tech', navShots: 'Screenshots', navDownload: 'Download', navTeam: 'Team',
-        heroPill: '100% Free • Works Offline • Zero Ads',
-        heroTitle: 'Detect AI Deepfakes in Voice, Images & News Directly on Your Phone',
-        heroDesc: 'Native Android app that protects your privacy: inspect WhatsApp & Telegram voice notes offline, float a smart shield icon over Facebook & TikTok, and verify claims in Arabic, English, and Kurdish Sorani.',
-        btnDownloadMain: 'Free Download (APK)', btnWatchVideo: 'Watch Video Guide',
-        metaVersion: 'Version 1.0.0', metaSize: '76.1 MB', metaAndroid: 'Android 8.0+', metaLangs: 'AR • EN • CKB',
-        videoTitle: 'Complete Video Walkthrough',
-        videoSub: 'See Fake Away detect cloned voices, manipulated images, and rumors completely offline',
-        videoCaption: 'How to detect Deepfakes without internet? 🛡️ | Fake Away Guide',
-        videoLink: 'Open on YouTube ↗',
-        featTitle: 'Forensic & On-Device AI Technologies',
-        featSub: 'Built to run locally on your phone without uploading sensitive files to the cloud',
-        f1Title: 'Voice AI Detective',
-        f1b1: '5-signal spectral & acoustic DSP forensics (FFT) for voice cloning.',
-        f1b2: 'Optional on-device Wav2Vec2 ONNX neural anti-spoofing pack.',
-        f1b3: 'Interactive timeline heatmap highlighting cloned vs authentic seconds.',
-        f1b4: 'Direct Share Sheet integration from WhatsApp and Telegram.',
-        f2Title: 'Floating Screen & Audio Shield',
-        f2b1: 'Floats above Facebook, TikTok, and WhatsApp for 1-tap inspection.',
-        f2b2: 'Offline Arabic, Kurdish & English text extraction (Tesseract OCR).',
-        f2b3: '2D FFT grid check, 8×8 manipulation heatmap, and SMOGY ONNX vision model.',
-        f2b4: 'Captures playing Reels/video audio via AudioPlaybackCapture.',
-        f3Title: 'Hybrid Trilingual Fact-Checker',
-        f3b1: 'Instant offline detection of clickbait, urgency, and synthetic text.',
-        f3b2: 'Native support for Arabic, Kurdish Sorani, and English.',
-        f3b3: 'Live corroboration via News RSS, Wikipedia & Tathabbat Newsroom.',
-        f3b4: 'Local scan history stored strictly on your device.',
-        shotsTitle: 'Real App Screenshots',
-        shotsSub: 'Tap any screen to zoom in and inspect details',
-        swipeHint: '← Swipe horizontally to browse screens →',
-        shot1: 'Offline Voice AI Detective', shot2: 'Floating Shield Launcher',
-        shot3: 'Floating Bubble Over Apps', shot4: 'Trilingual Hybrid Fact-Check',
-        shot5: 'Forensic Risk & Verdict Card', shot6: 'Language Switch & ONNX Packs',
-        dlPill: 'Direct & Completely Free Download',
-        dlTitle: 'Install Fake Away on Your Phone',
-        dlSub: 'Official signed APK for Android 8.0+ — works offline immediately after install.',
-        dlBtn: 'Download FakeAway-v1.0.0.apk (76.1 MB)',
-        s1Title: '1. Download APK', s1Desc: 'Tap the download button above to save the installer to your Android phone.',
-        s2Title: '2. Allow Install', s2Desc: 'Enable "Install from unknown sources" when prompted by Android.',
-        s3Title: '3. Start Scanning', s3Desc: 'Launch the Floating Shield over Facebook or Share any WhatsApp voice note.',
-        teamTitle: 'Development Team',
-        teamIntro: 'Created by Blue Team at the innovation and technology hub:',
-        leadRole: 'For Design & Software Development', waBtn: 'Chat on WhatsApp', callBtn: 'Direct Call',
-        footerText: 'Fake Away • Free Offline Deepfake Detector • Blue Team in',
-        stickySub: 'Free • 76.1 MB', stickyBtn: 'Free APK'
+        badge_free: "100% Free",
+        nav_features: "Features",
+        nav_lab: "Rumor Lab",
+        nav_video: "Video",
+        nav_screens: "Screenshots",
+        nav_team: "Team",
+        nav_download: "Download APK",
+        hero_pill_1: "100% Offline Ready",
+        hero_pill_2: "Updated Release • ARM64",
+        hero_pill_3: "Arabic • English • Kurdish",
+        hero_title_1: "Fake Away —",
+        hero_title_2: "Verify Before You Believe",
+        hero_lead: "An all-in-one on-device verification app to detect deepfake voice notes, manipulated images, and misleading news, featuring the new Rumor Lab, Floating Shield overlay, and Tathabbat newsroom integration — completely free and private.",
+        hero_privacy: "Voice and image inspection runs directly on your phone without uploading your files to any server.",
+        hero_dl_btn: "Download Free APK",
+        hero_vid_btn: "Watch Walkthrough",
+        hero_screens_btn: "View 9 Screenshots",
+        meta_file_lbl: "Direct Installer",
+        meta_size_lbl: "Package Size",
+        meta_price_lbl: "Price",
+        meta_price_val: "100% Free",
+        float_1_t: "Floating Shield",
+        float_1_s: "Instant overlay check over WhatsApp, Facebook & TikTok",
+        float_2_t: "Rumor Lab",
+        float_2_s: "Risk gauge and 48-hour spread forecast",
+        feat_kicker: "New Release Capabilities",
+        feat_title: "Faster Unified Interface Across 5 Smart Tabs",
+        feat_desc: "Redesigned from the ground up for one-tap access to voice, image, and news verification alongside rumor spread forecasting and user awareness quizzes.",
+        f1_t: "Home: What Do You Want to Check?",
+        f1_d: "One-tap launch for voice messages, images/screens, or news claims, paired with recent scan history and an on-device privacy banner.",
+        f1_tag1: "Voice Note",
+        f1_tag2: "Image / Screen",
+        f1_tag3: "News / Claim",
+        f2_t: "Voice Check & Direct Recording",
+        f2_d: "Record live or pick audio/video files, share voice notes directly from WhatsApp or Telegram, and test built-in synthetic vs. natural voice samples.",
+        f2_tag1: "Live Recording",
+        f2_tag2: "WhatsApp & Telegram Share",
+        f3_t: "Floating Shield & Hybrid Check",
+        f3_d: "Switch seamlessly between Voice, Floating Shield, and Verify inside the Scan tab for over-app screen capture and linguistic news checks.",
+        f3_tag1: "Floating Bubble",
+        f3_tag2: "Built-in OCR",
+        f4_t: "Rumor Lab & Quiz Yourself",
+        f4_d: "The new Discover tab scores phrasing risk, forecasts 3h/24h/48h reach, and offers interactive quizzes to sharpen media literacy.",
+        f4_tag1: "Rumor Lab",
+        f4_tag2: "Quiz Yourself",
+        f5_t: "Categorized Scan History",
+        f5_d: "Automatic local history with quick filters (All, Voice, Screen & Images, News) displaying risk scores and Overlay Mic checks.",
+        f5_tag1: "Smart Filters",
+        f5_tag2: "Overlay Mic",
+        f6_t: "Strict Offline Mode & Tathabbat",
+        f6_d: "Lock all network calls to run purely on local ONNX/OCR models, or optionally connect to the Tathabbat newsroom verification server.",
+        f6_tag1: "Strict Offline",
+        lab_kicker: "New in Discover Tab",
+        lab_title: "Rumor Lab: Forecast Spread Before It Goes Viral",
+        lab_desc: "Fake Away goes beyond a single score by explaining phrasing indicators and projecting 24-hour reach (Low / Likely / High) plus a 48-hour spread curve.",
+        lab_m1: "Risk & Slow/Fast Spread Gauge",
+        lab_m2: "24h Reach & 48h Spread Curve",
+        lab_m3: "Trilingual NLP & OCR Forensics",
+        lab_cta: "Try Rumor Lab on Android",
+        mod_kicker: "On-Device AI",
+        mod_title: "Bundled Offline Models Inside Your Phone",
+        mod_1_t: "Voice Authenticity Model",
+        mod_1_d: "Spectrogram forensics to detect AI-cloned or synthetic voices locally (63.4 MB).",
+        mod_installed: "Installed • 63.4 MB",
+        mod_2_t: "Image Authenticity Model",
+        mod_2_d: "Detects AI-generated visuals and tampered screenshots on-device (50.1 MB).",
+        mod_installed_img: "Installed • 50.1 MB",
+        mod_3_t: "Built-in OCR Engine (Arabic + Kurdish + English)",
+        mod_3_d: "Extracts text from images and screenshots completely offline (Arabic.traineddata + eng.traineddata).",
+        mod_offline: "Bundled Offline",
+        mod_4_t: "Tathabbat Newsroom Server",
+        mod_4_d: "Optional hybrid verification against trusted newsroom sources when online.",
+        mod_hybrid: "Hybrid Integration",
+        vid_kicker: "Video Guide",
+        vid_title: "How to Detect Deepfakes Without Internet?",
+        vid_desc: "Complete walkthrough of Fake Away for verifying audio, images, and news.",
+        vid_note: "Watch the full walkthrough on YouTube or download the APK to try it yourself.",
+        vid_yt_btn: "Open on YouTube ↗",
+        scr_kicker: "Updated UI Showcase",
+        scr_title: "Inside All 9 Screens of Fake Away",
+        scr_desc: "Click any screen to enlarge and browse the full flow.",
+        s1_t: "1. Home Dashboard",
+        s1_d: "Quick actions for voice, image, and news checks with the local privacy banner.",
+        s2_t: "2. Scan Tab (Voice)",
+        s2_d: "Live mic recording, audio/video picker, and synthetic vs. natural voice test buttons.",
+        s3_t: "3. Discover Tab (Rumor Lab)",
+        s3_d: "Risk percentage, 24h reach forecast, phrasing notes, and 48h spread chart.",
+        s4_t: "4. Scan History",
+        s4_d: "Filter chips for Voice, Screen & Images, and News with saved risk scores.",
+        s5_t: "5. Settings & Strict Offline",
+        s5_d: "Instant Arabic, English, and Sorani Kurdish switching plus Strict Offline toggle.",
+        s6_t: "6. Local AI Models & Tathabbat",
+        s6_d: "Manage Voice (63.4 MB) and Image (50.1 MB) models and Tathabbat server.",
+        s7_t: "7. About Blue Team",
+        s7_d: "Blue Team created in Mosul Space with direct link to the innovation hub.",
+        s8_t: "8. Team Members & Contact",
+        s8_d: "Developer credits with direct WhatsApp, phone, and Instagram links.",
+        s9_t: "9. New App Identity",
+        s9_d: "Updated Fake Away icon combining the shield, waveform, and pixel grid.",
+        team_kicker: "Engineering Team",
+        team_title: "Blue Team • Created in Mosul Space",
+        mosul_desc: "Mosul Space – Innovation Hub that promote Business and Technology",
+        mosul_btn: "Visit Mosul Space ↗",
+        m1_name: "Adnan Sultan Hassan",
+        m1_badge: "Design & Software Requests",
+        m1_role: "Direct contact for UI/UX design & software development — 07740851231",
+        m1_wa: "WhatsApp 07740851231",
+        m1_call: "Call",
+        m4_name: "Khaled Mohammed Ahmed",
+        m4_role: "Instagram: KA_XF",
+        m4_ig: "Instagram KA_XF ↗",
+        m2_name: "Aya Eyad Thamer",
+        m3_name: "Sidra Ahmed Mohammed Sheet",
+        m_member_role: "Software Team Member • Mosul Space",
+        footer_txt: "100% Free App • Built by Blue Team in Mosul Space",
+        footer_dl: "Download APK",
+        lb_prev: "Previous",
+        lb_close: "Close",
+        lb_next: "Next"
       },
       ckb: {
-        dir: 'rtl',
-        title: 'Fake Away — ئاشکراکەری ساختەی AI ئۆفلاين | داگرتنی خۆڕایی بۆ ئەندرۆید',
-        brandSub: 'قەڵغانی ئۆفلاين بۆ دەنگ و وێنە و هەواڵ',
-        navVideo: 'ڤیدیۆ', navFeatures: 'تەکنەلۆژیا', navShots: 'وێنەکان', navDownload: 'داگرتن', navTeam: 'تیم',
-        heroPill: '١٠٠٪ بەخۆڕایی • ئۆفلاين بێ ئینتەرنێت • بێ ڕیکلام',
-        heroTitle: 'دەستبەجێ ساختەی AI لە دەنگ و وێنە و هەواڵدا ئاشکرا بکە لەسەر مۆبایلەکەت',
-        heroDesc: 'ئەپێکی ڕەسەنی ئەندرۆید بۆ پاراستنی نهێنییەکانت: نامە دەنگییەکانی واتساپ و تێلیگرام بە ئۆفلاين دەپشکنێت، و ئایکۆنێکی سەرشاشە لەسەر فەیسبووک و تیک تۆک دادەنێت — بە پشتگیری تەواوی کوردی سۆرانی، عەرەبی و ئینگلیزی.',
-        btnDownloadMain: 'داگرتنی ئەپ بەخۆڕایی (APK)', btnWatchVideo: 'سەیری ڤیدیۆی ڕوونکردنەوە بکە',
-        metaVersion: 'وەشانی 1.0.0', metaSize: '76.1 MB', metaAndroid: 'ئەندرۆید 8.0 یان نوێتر', metaLangs: 'کوردی • عەرەبی • ئینگلیزی',
-        videoTitle: 'ڕێبەری تەواو بە ڤیدیۆ',
-        videoSub: 'ببینە چۆن Fake Away بە کردەیی دەنگی ساختە و وێنە و هەواڵی چەواشە بێ ئینتەرنێت دەدۆزێتەوە',
-        videoCaption: 'چۆن ساختەکاری AI بێ ئینتەرنێت ئاشکرا بکەیت؟ 🛡️ | ڕێبەری Fake Away',
-        videoLink: 'کردنەوە لە یوتیوب ↗',
-        featTitle: 'تەکنەلۆژیاکانی زیرەکی دەستکرد و فۆرێنسیک',
-        featSub: 'دیزاینکراوە بۆ کارکردن لەسەر مۆبایل بێ ناردنی فایلە نهێنییەکانت بۆ دەرەوە',
-        f1Title: 'ئاشکراکەری دەنگی زیرەک',
-        f1b1: 'شیکاری سپێکترام و فیزیکی (FFT) بۆ ٥ نیشانەی دەنگی ساختە.',
-        f1b2: 'پشتگیری مۆدێلی Wav2Vec2 ONNX بە شێوەی ناوخۆیی.',
-        f1b3: 'نەخشەی کاتی ڕەنگاوڕەنگ بۆ دیاریکردنی چرکە ساختەکان بە سوور.',
-        f1b4: 'ناردنی ڕاستەوخۆ لە واتساپ و تێلیگرامەوە لە ڕێگەی Share.',
-        f2Title: 'ئایکۆنی سەرشاشە لەسەر ئەپەکان',
-        f2b1: 'لەسەر فەیسبووک و تیک تۆک و واتساپ کار دەکات بە یەک کلیک.',
-        f2b2: 'دەرهێنانی دەقی کوردی، عەرەبی و ئینگلیزی ئۆفلاين (Tesseract OCR).',
-        f2b3: 'پشکنینی وێنە بە 2D FFT و نەخشەی گەرمی 8×8 و مۆدێلی SMOGY ONNX.',
-        f2b4: 'وەرگرتنی دەنگی ڤیدیۆ و ڕیلزە کاراکان ڕاستەوخۆ.',
-        f3Title: 'پشکنینی تێکەڵی هەواڵ',
-        f3b1: 'دۆزینەوەی خێرای دەقی فریودەر و نووسینی ئامێری بە ئۆفلاين.',
-        f3b2: 'پشتگیری ڕەسەن بۆ کوردی سۆرانی، عەرەبی و ئینگلیزی.',
-        f3b3: 'بەراوردکردن لەگەڵ هەواڵە زیندووەکان، ویکیپیدیا و ژووری تەسبەت.',
-        f3b4: 'تۆماری پشکنینەکان تەنها لەسەر مۆبایلەکەت دەپارێزرێن.',
-        shotsTitle: 'دیمەنی ڕاستەقینە لە ڕووکاری ئەپەکە',
-        shotsSub: 'پەنجە بنێ بە هەر وێنەیەکدا بۆ گەورەکردنی',
-        swipeHint: '← بە لای چەپ و ڕاستدا ڕایبکێشە →',
-        shot1: 'ئاشکراکەری دەنگی AI ئۆفلاين', shot2: 'کاراکردنی ئایکۆنی سەرشاشە',
-        shot3: 'ئایکۆنی سەرشاشە لەسەر مۆبایل', shot4: 'پشکنینی هەواڵ بە سێ زمان',
-        shot5: 'ڕاپۆرتی فۆرێنسیک و ڕێژەی مەترسی', shot6: 'گۆڕینی زمان و مۆدێلەکانی ONNX',
-        dlPill: 'داگرتنی ڕاستەوخۆ و تەواو خۆڕایی',
-        dlTitle: 'ئێستا Fake Away لەسەر مۆبایلەکەت دابمەزرێنە',
-        dlSub: 'فایلی فەرمی و واژووکراوی APK بۆ ئەندرۆید (8.0+) — دوای دامەزراندن ڕاستەوخۆ ئۆفلاين کاردەکات.',
-        dlBtn: 'داگرتنی FakeAway-v1.0.0.apk (76.1 MB)',
-        s1Title: '١. فایلی APK دابگرە', s1Desc: 'پەنجە بنێ بە دوگمەی داگرتنی سەرەوەدا بۆ پاشەکەوتکردنی لە مۆبایل.',
-        s2Title: '٢. ڕێگە بە دامەزراندن بدە', s2Desc: 'بژاردەی دامەزراندن لە سەرچاوە نەناسراوەکان چالاک بکە.',
-        s3Title: '٣. دەستبەجێ پشکنین بکە', s3Desc: 'ئایکۆنی سەرشاشە لەسەر فەیسبووک بکەرەوە یان دەنگ لە واتساپەوە بنێرە.',
-        teamTitle: 'دەربارەی تیمی پڕۆگرامسازی',
-        teamIntro: 'ئەم پڕۆژەیە لەلایەن تیمی Blue Team لە ناوەندی داهێنان و تەکنەلۆژیا دروستکراوە:',
-        leadRole: 'بۆ داواکردنی دیزاین و پڕۆگرامسازی', waBtn: 'پەیوەندی بە واتساپ', callBtn: 'پەیوەندی ڕاستەوخۆ',
-        footerText: 'Fake Away • ئەپی خۆڕایی بۆ ئاشکراکردنی ساختەی AI ئۆفلاين • Blue Team in',
-        stickySub: 'خۆڕایی • 76.1 MB', stickyBtn: 'داگرتنی خۆڕایی'
+        badge_free: "بێبەرامبەر ١٠٠٪",
+        nav_features: "تایبەتمەندییە نوێکان",
+        nav_lab: "تاقیگەی دەنگۆ",
+        nav_video: "ڤیدیۆ",
+        nav_screens: "ڕووکارەکان",
+        nav_team: "تیم",
+        nav_download: "داگرتنی APK",
+        hero_pill_1: "١٠٠٪ بەبێ ئینتەرنێت کاردەکات",
+        hero_pill_2: "وەشانی نوێکراوە • ARM64",
+        hero_pill_3: "عەرەبی • English • کوردی",
+        hero_title_1: "Fake Away —",
+        hero_title_2: "بەدواداچوون بکە پێش ئەوەی باوەڕ بکەیت",
+        hero_lead: "پلاتفۆرمێکی زیرەک لەسەر مۆبایلەکەت بۆ ئاشکراکردنی ساختەکاری قووڵ (Deepfake) لە دەنگ، وێنە، شاشە و هەواڵەکاندا، لەگەڵ تاقیگەی دەنگۆ، قەڵغانی سەرشاشە و سێرڤەری تەسبەت — بە تەواوی بێبەرامبەر.",
+        hero_privacy: "پشکنینی دەنگ و وێنە بە تەواوی لەسەر مۆبایلەکەت ئەنجام دەدرێت بەبێ ناردنی فایلەکانت بۆ هیچ سێرڤەرێک.",
+        hero_dl_btn: "داگرتنی ئەپ بێبەرامبەر (APK)",
+        hero_vid_btn: "سەیری ڤیدیۆی ڕوونکردنەوە بکە",
+        hero_screens_btn: "بینینی ٩ ڕووکار",
+        meta_file_lbl: "فایلی دامەزراندن",
+        meta_size_lbl: "قەبارەی گشتی",
+        meta_price_lbl: "تێچوو",
+        meta_price_val: "بێبەرامبەر ١٠٠٪",
+        float_1_t: "قەڵغانی سەرشاشە",
+        float_1_s: "پشکنینی ڕاستەوخۆ لەسەر واتساپ و فەیسبووک و تیک تۆک",
+        float_2_t: "تاقیگەی دەنگۆ",
+        float_2_s: "پێوانەی مەترسی و پێشبینی بڵاوبوونەوە بۆ ٤٨ کاتژمێر",
+        feat_kicker: "تواناکانی وەشانی نوێ",
+        feat_title: "ڕووکارێکی خێراتر و پشکنینی زیرەک لە ٥ بەشدا",
+        feat_desc: "ئەپەکە بە تەواوی دیزاینکراوەتەوە بۆ دەستگەیشتنی خێرا بە پشکنینی دەنگ، وێنە و هەواڵ، لەگەڵ تاقیگەی شیکردنەوەی دەنگۆ.",
+        f1_t: "سەرەکی: دەتەوێت چی بپشکنیت؟",
+        f1_d: "دەستگەیشتنی خێرا بە پشکنینی نامەی دەنگی، وێنە یان شاشە، یان هەواڵ و بانگەشە، لەگەڵ بینینی دوایین پشکنینەکان.",
+        f1_tag1: "نامەی دەنگی",
+        f1_tag2: "وێنە یان شاشە",
+        f1_tag3: "هەواڵ یان بانگەشە",
+        f2_t: "پشکنینی دەنگ و تۆمارکردنی ڕاستەوخۆ",
+        f2_d: "ڕاستەوخۆ تۆمار بکە یان فایلی دەنگ/ڤیدیۆ هەڵبژێرە، یان نامەی دەنگی واتساپ و تێلیگرام بنێرە بۆ Fake Away.",
+        f2_tag1: "تۆمارکردنی ڕاستەوخۆ",
+        f2_tag2: "هاوبەشکردن لە واتساپ",
+        f3_t: "قەڵغانی سەرشاشە و پشکنینی تێکەڵ",
+        f3_d: "گواستنەوەی خێرا لە نێوان دەنگ، قەڵغانی سەرشاشە و پشکنینی هەواڵ لە بەشی پشکنیندا.",
+        f3_tag1: "ئایکۆنی سەرشاشە",
+        f3_tag2: "OCR ناوخۆیی",
+        f4_t: "تاقیگەی دەنگۆ و خۆت تاقیبکەرەوە",
+        f4_d: "بەشی نوێی \"بدۆزەرەوە\" مەترسی داڕشتنی هەواڵ دەپێوێت و پێشبینی بڵاوبوونەوەی ٢٤ و ٤٨ کاتژمێر دەکات.",
+        f4_tag1: "تاقیگەی دەنگۆ",
+        f4_tag2: "خۆت تاقیبکەرەوە",
+        f5_t: "تۆماری پشکنینی پۆلێنکراو",
+        f5_d: "هەڵگرتنی خۆکار لەسەر ئامێرەکە لەگەڵ فلتەری خێرا (هەمووی، دەنگ، شاشە و وێنە، هەواڵ).",
+        f5_tag1: "فلتەری زیرەک",
+        f5_tag2: "Overlay Mic",
+        f6_t: "دۆخی ئۆفلاینی تەواو و سێرڤەری تەسبەت",
+        f6_d: "داخستنی تەواوی تۆڕ بۆ کارکردن تەنها بە مۆدێلە ناوخۆییەکان، یان بەستنەوەی بژاردەیی بە سێرڤەری تەسبەت.",
+        f6_tag1: "بەبێ ئینتەرنێت",
+        lab_kicker: "نوێ لە بەشی بدۆزەرەوە",
+        lab_title: "تاقیگەی دەنگۆ: پێشبینی بڵاوبوونەوە پێش تەشەنەسەندن",
+        lab_desc: "Fake Away شیکردنەوە بۆ شێوازی داڕشتنی هەواڵ دەکات و پێشبینی بڵاوبوونەوەی ٢٤ کاتژمێر و هێڵکاری ٤٨ کاتژمێر پیشان دەدات.",
+        lab_m1: "پێوانەی ڕێژەی مەترسی",
+        lab_m2: "پێشبینی ٢٤ و ٤٨ کاتژمێر",
+        lab_m3: "شیکردنەوەی عەرەبی/ئینگلیزی/کوردی",
+        lab_cta: "تاقیگەی دەنگۆ تاقیبکەرەوە",
+        mod_kicker: "زیرەکی دەستکردی ناوخۆیی",
+        mod_title: "مۆدێلە جێگیرکراوەکان بۆ کارکردن بەبێ ئینتەرنێت",
+        mod_1_t: "مۆدێلی ڕەسەنایەتی دەنگ",
+        mod_1_d: "پشکنینی شەپۆلی دەنگ و ئاشکراکردنی دەنگی ساختە لەسەر مۆبایل (63.4 MB).",
+        mod_installed: "دامەزراوە • 63.4 MB",
+        mod_2_t: "مۆدێلی ڕەسەنایەتی وێنە",
+        mod_2_d: "ئاشکراکردنی وێنەی دروستکراو بە زیرەکی دەستکرد بەبێ ئینتەرنێت (50.1 MB).",
+        mod_installed_img: "دامەزراوە • 50.1 MB",
+        mod_3_t: "بزوێنەری OCR (عەرەبی + کوردی + ئینگلیزی)",
+        mod_3_d: "دەرهێنانی دەق لە وێنە و شاشە بە تەواوی ئۆفلاين (Arabic.traineddata + eng.traineddata).",
+        mod_offline: "ئۆفلاینی تەواو",
+        mod_4_t: "سێرڤەری ژووری هەواڵی تەسبەت (Tathabbat)",
+        mod_4_d: "پشتڕاستکردنەوەی هەواڵ لەگەڵ سەرچاوە باوەڕپێکراوەکان کاتی هەبوونی ئینتەرنێت.",
+        mod_hybrid: "پەیوەندی تێکەڵ",
+        vid_kicker: "ڕوونکردنەوەی ڤیدیۆیی",
+        vid_title: "چۆن ساختەکاری قووڵ بەبێ ئینتەرنێت ئاشکرا دەکەیت؟",
+        vid_desc: "ڕێنمایی تەواو بۆ بەکارهێنانی ئەپی Fake Away.",
+        vid_note: "سەیری ڤیدیۆکە بکە لە YouTube یان ئەپەکە دابگرە.",
+        vid_yt_btn: "کردنەوە لە YouTube ↗",
+        scr_kicker: "ڕووکارەکانی وەشانی نوێ",
+        scr_title: "گەشتێک بەناو هەموو ٩ شاشەی Fake Away",
+        scr_desc: "کرتە لەسەر هەر شاشەیەک بکە بۆ گەورەکردن.",
+        s1_t: "١. شاشەی سەرەکی",
+        s1_d: "دەستگەیشتنی خێرا بە پشکنینی دەنگ، وێنە و هەواڵ.",
+        s2_t: "٢. بەشی پشکنین (دەنگ)",
+        s2_d: "تۆمارکردنی ڕاستەوخۆ، هەڵبژاردنی فایل و نموونەی دەنگی تاقیکاری.",
+        s3_t: "٣. بەشی بدۆزەرەوە (تاقیگەی دەنگۆ)",
+        s3_d: "ڕێژەی مەترسی و هێڵکاری بڵاوبوونەوە بۆ ٤٨ کاتژمێر.",
+        s4_t: "٤. تۆماری پشکنینەکان",
+        s4_d: "فلتەری دەنگ، وێنە و هەواڵ لەگەڵ ئەنجامە پاشەکەوتکراوەکان.",
+        s5_t: "٥. ڕێکخستن و دۆخی ئۆفلاين",
+        s5_d: "گۆڕینی زمان (عەرەبی، ئینگلیزی، کوردی) و دۆخی ئۆفلاینی تەواو.",
+        s6_t: "٦. مۆدێلە ناوخۆییەکان و تەسبەت",
+        s6_d: "بەڕێوەبردنی مۆدێلی دەنگ (63.4 MB) و وێنە (50.1 MB) و تەسبەت.",
+        s7_t: "٧. دەربارەی تیمی بەرنامەسازی",
+        s7_d: "Blue Team لە Mosul Space لەگەڵ بەستەری ناوەندەکە.",
+        s8_t: "٨. ئەندامانی تیم و پەیوەندی",
+        s8_d: "زانیاری گەشەپێدەران و بەستەرەکانی واتساپ و ئینستاگرام.",
+        s9_t: "٩. لۆگۆی نوێی ئەپەکە",
+        s9_d: "شێوازی نوێی لۆگۆی Fake Away.",
+        team_kicker: "تیمی گەشەپێدەر",
+        team_title: "Blue Team • دروستکراوە لە Mosul Space",
+        mosul_desc: "Mosul Space – Innovation Hub that promote Business and Technology",
+        mosul_btn: "سەردانی Mosul Space ↗",
+        m1_name: "عدنان سلطان حسن",
+        m1_badge: "بۆ داواکاری دیزاین و بەرنامە",
+        m1_role: "پەیوەندی ڕاستەوخۆ بۆ دیزاین و دروستکردنی بەرنامە — 07740851231",
+        m1_wa: "واتساپ 07740851231",
+        m1_call: "پەیوەندی",
+        m4_name: "خالد محمد أحمد",
+        m4_role: "ئینستاگرام: KA_XF",
+        m4_ig: "ئینستاگرام KA_XF ↗",
+        m2_name: "ايه اياد ثامر",
+        m3_name: "سدرة احمد محمد شيت",
+        m_member_role: "ئەندامی تیمی بەرنامەسازی • Mosul Space",
+        footer_txt: "ئەپێکی تەواو بێبەرامبەر • گەشەپێدراوە لەلایەن Blue Team لە Mosul Space",
+        footer_dl: "داگرتنی APK",
+        lb_prev: "پێشوو",
+        lb_close: "داخستن",
+        lb_next: "دواتر"
       }
     };
 
-    function setLang(lang) {
-      const pack = I18N[lang] || I18N.ar;
-      document.documentElement.lang = lang;
-      document.documentElement.dir = pack.dir;
-      document.title = pack.title;
-      document.querySelectorAll('[data-i]').forEach(el => {
-        const key = el.getAttribute('data-i');
-        if (pack[key]) el.textContent = pack[key];
+    let currentLang = "ar";
+    let lbIndex = 0;
+
+    function applyLang(lang) {
+      currentLang = I18N[lang] ? lang : "ar";
+      const dict = I18N[currentLang];
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === "en" ? "ltr" : "rtl";
+
+      document.querySelectorAll("[data-i]").forEach(el => {
+        const key = el.getAttribute("data-i");
+        if (dict[key] !== undefined) el.textContent = dict[key];
       });
-      ['ar', 'en', 'ckb'].forEach(l => {
-        document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === currentLang);
       });
-      try { localStorage.setItem('fakeaway_web_lang', lang); } catch (_) {}
     }
 
-    (function initLang() {
-      let saved = 'ar';
-      try { saved = localStorage.getItem('fakeaway_web_lang') || 'ar'; } catch (_) {}
-      setLang(I18N[saved] ? saved : 'ar');
-    })();
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => applyLang(btn.dataset.lang));
+    });
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileDrawer = document.getElementById("mobileDrawer");
+    menuBtn.addEventListener("click", () => {
+      mobileDrawer.classList.toggle("open");
+    });
+    mobileDrawer.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => mobileDrawer.classList.remove("open"));
+    });
+
+    const cards = Array.from(document.querySelectorAll(".shot-card"));
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg");
+    const lbTitle = document.getElementById("lbTitle");
+    const lbCap = document.getElementById("lbCap");
+
+    function showLightbox(idx) {
+      lbIndex = (idx + cards.length) % cards.length;
+      const card = cards[lbIndex];
+      lbImg.src = card.querySelector("img").src;
+      lbTitle.textContent = card.querySelector(".shot-title").textContent;
+      lbCap.textContent = card.querySelector(".shot-caption").textContent;
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+    }
+
+    cards.forEach((card, i) => card.addEventListener("click", () => showLightbox(i)));
+    document.getElementById("lbPrev").addEventListener("click", () => showLightbox(lbIndex - 1));
+    document.getElementById("lbNext").addEventListener("click", () => showLightbox(lbIndex + 1));
+    document.getElementById("lbClose").addEventListener("click", () => {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+    });
+    lightbox.addEventListener("click", e => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+      }
+    });
+    document.addEventListener("keydown", e => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+      } else if (e.key === "ArrowLeft") {
+        showLightbox(lbIndex + (currentLang === "en" ? -1 : 1));
+      } else if (e.key === "ArrowRight") {
+        showLightbox(lbIndex + (currentLang === "en" ? 1 : -1));
+      }
+    });
+
+    applyLang("ar");
   </script>
 </body>
 </html>
